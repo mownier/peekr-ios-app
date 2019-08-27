@@ -7,19 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		485BA3942313C96800A43130 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3932313C96800A43130 /* SignUpService.swift */; };
+		485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39B2313CCF900A43130 /* SignUpService.swift */; };
+		485BA39E2313CD0700A43130 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39D2313CD0700A43130 /* Result.swift */; };
+		485BA3A02313CD8A00A43130 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39F2313CD8A00A43130 /* Either.swift */; };
+		485BA3A22313CDCE00A43130 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A12313CDCE00A43130 /* Pair.swift */; };
+		485BA3A42313CE1300A43130 /* Triple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A32313CE1300A43130 /* Triple.swift */; };
+		485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A52313CF5C00A43130 /* CoreError.swift */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
 		48A22AFB2313887C0006F4AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AFA2313887C0006F4AB /* Assets.xcassets */; };
 		48A22AFE2313887C0006F4AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AFC2313887C0006F4AB /* LaunchScreen.storyboard */; };
+		48BA320D23151653009B2EA6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320C23151653009B2EA6 /* Strings.swift */; };
 		7C38933B3BEBD7524BCA3A23 /* Pods_Peekr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B02E76514D27ADCE66EAA7 /* Pods_Peekr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		05B02E76514D27ADCE66EAA7 /* Pods_Peekr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peekr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3528431278CB2B94B8356D /* Pods-Peekr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peekr.debug.xcconfig"; path = "Target Support Files/Pods-Peekr/Pods-Peekr.debug.xcconfig"; sourceTree = "<group>"; };
-		485BA3932313C96800A43130 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpService.swift; path = lib/core/src/SignUpService.swift; sourceTree = SOURCE_ROOT; };
+		485BA39B2313CCF900A43130 /* SignUpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		485BA39D2313CD0700A43130 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		485BA39F2313CD8A00A43130 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		485BA3A12313CDCE00A43130 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		485BA3A32313CE1300A43130 /* Triple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triple.swift; sourceTree = "<group>"; };
+		485BA3A52313CF5C00A43130 /* CoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreError.swift; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A22AF52313887B0006F4AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +38,7 @@
 		48A22AFA2313887C0006F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48A22AFD2313887C0006F4AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48A22AFF2313887C0006F4AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48BA320C23151653009B2EA6 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		C6F57A5E84206A69716ED320 /* Pods-Peekr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peekr.release.xcconfig"; path = "Target Support Files/Pods-Peekr/Pods-Peekr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,10 +57,34 @@
 		485BA3922313C93500A43130 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				485BA3932313C96800A43130 /* SignUpService.swift */,
+				485BA3992313CCF900A43130 /* Models */,
+				485BA39A2313CCF900A43130 /* Services */,
 			);
 			name = Core;
 			sourceTree = "<group>";
+		};
+		485BA3992313CCF900A43130 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				485BA3A52313CF5C00A43130 /* CoreError.swift */,
+				485BA39F2313CD8A00A43130 /* Either.swift */,
+				485BA3A12313CDCE00A43130 /* Pair.swift */,
+				485BA39D2313CD0700A43130 /* Result.swift */,
+				48BA320C23151653009B2EA6 /* Strings.swift */,
+				485BA3A32313CE1300A43130 /* Triple.swift */,
+			);
+			name = Models;
+			path = lib/core/src/Models;
+			sourceTree = SOURCE_ROOT;
+		};
+		485BA39A2313CCF900A43130 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				485BA39B2313CCF900A43130 /* SignUpService.swift */,
+			);
+			name = Services;
+			path = lib/core/src/Services;
+			sourceTree = SOURCE_ROOT;
 		};
 		48A22AE72313887B0006F4AB = {
 			isa = PBXGroup;
@@ -106,6 +142,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48A22B022313887C0006F4AB /* Build configuration list for PBXNativeTarget "Peekr" */;
 			buildPhases = (
+				48F638BC2315123600AA8775 /* Lint */,
 				AB5E1D2FC2F1BCFD13C12764 /* [CP] Check Pods Manifest.lock */,
 				48A22AEC2313887B0006F4AB /* Sources */,
 				48A22AED2313887B0006F4AB /* Frameworks */,
@@ -168,6 +205,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		48F638BC2315123600AA8775 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "exit 0\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or brew install swiftlint\"\nfi\n";
+		};
 		AB5E1D2FC2F1BCFD13C12764 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,8 +289,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
-				485BA3942313C96800A43130 /* SignUpService.swift in Sources */,
+				48BA320D23151653009B2EA6 /* Strings.swift in Sources */,
+				485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */,
+				485BA39E2313CD0700A43130 /* Result.swift in Sources */,
 				48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */,
+				485BA3A02313CD8A00A43130 /* Either.swift in Sources */,
+				485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */,
+				485BA3A42313CE1300A43130 /* Triple.swift in Sources */,
+				485BA3A22313CDCE00A43130 /* Pair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
