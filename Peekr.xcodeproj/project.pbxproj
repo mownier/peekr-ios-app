@@ -18,7 +18,7 @@
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
 		48A22AFB2313887C0006F4AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AFA2313887C0006F4AB /* Assets.xcassets */; };
 		48A22AFE2313887C0006F4AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AFC2313887C0006F4AB /* LaunchScreen.storyboard */; };
-		48BA320D23151653009B2EA6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320C23151653009B2EA6 /* Strings.swift */; };
+		48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320C23151653009B2EA6 /* CoreStrings.swift */; };
 		48BA320F23151930009B2EA6 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320E23151930009B2EA6 /* SignInService.swift */; };
 		7C38933B3BEBD7524BCA3A23 /* Pods_Peekr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B02E76514D27ADCE66EAA7 /* Pods_Peekr.framework */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 		48A22AFA2313887C0006F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48A22AFD2313887C0006F4AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48A22AFF2313887C0006F4AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48BA320C23151653009B2EA6 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		48BA320C23151653009B2EA6 /* CoreStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStrings.swift; sourceTree = "<group>"; };
 		48BA320E23151930009B2EA6 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		C6F57A5E84206A69716ED320 /* Pods-Peekr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peekr.release.xcconfig"; path = "Target Support Files/Pods-Peekr/Pods-Peekr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,10 +69,10 @@
 			isa = PBXGroup;
 			children = (
 				485BA3A52313CF5C00A43130 /* CoreError.swift */,
+				48BA320C23151653009B2EA6 /* CoreStrings.swift */,
 				485BA39F2313CD8A00A43130 /* Either.swift */,
 				485BA3A12313CDCE00A43130 /* Pair.swift */,
 				485BA39D2313CD0700A43130 /* Result.swift */,
-				48BA320C23151653009B2EA6 /* Strings.swift */,
 				485BA3A32313CE1300A43130 /* Triple.swift */,
 			);
 			name = Models;
@@ -292,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
-				48BA320D23151653009B2EA6 /* Strings.swift in Sources */,
+				48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */,
 				485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */,
 				485BA39E2313CD0700A43130 /* Result.swift in Sources */,
 				48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */,
