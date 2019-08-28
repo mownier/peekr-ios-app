@@ -13,6 +13,7 @@
 		485BA3A22313CDCE00A43130 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A12313CDCE00A43130 /* Pair.swift */; };
 		485BA3A42313CE1300A43130 /* Triple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A32313CE1300A43130 /* Triple.swift */; };
 		485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A52313CF5C00A43130 /* CoreError.swift */; };
+		48792E722316138500223DF8 /* SignOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48792E712316138500223DF8 /* SignOutService.swift */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		485BA3A12313CDCE00A43130 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
 		485BA3A32313CE1300A43130 /* Triple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triple.swift; sourceTree = "<group>"; };
 		485BA3A52313CF5C00A43130 /* CoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreError.swift; sourceTree = "<group>"; };
+		48792E712316138500223DF8 /* SignOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutService.swift; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A22AF52313887B0006F4AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				485BA39B2313CCF900A43130 /* SignUpService.swift */,
 				48BA320E23151930009B2EA6 /* SignInService.swift */,
+				48792E712316138500223DF8 /* SignOutService.swift */,
 			);
 			name = Services;
 			path = lib/core/src/Services;
@@ -299,6 +302,7 @@
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				485BA3A02313CD8A00A43130 /* Either.swift in Sources */,
 				485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */,
+				48792E722316138500223DF8 /* SignOutService.swift in Sources */,
 				485BA3A42313CE1300A43130 /* Triple.swift in Sources */,
 				485BA3A22313CDCE00A43130 /* Pair.swift in Sources */,
 			);
