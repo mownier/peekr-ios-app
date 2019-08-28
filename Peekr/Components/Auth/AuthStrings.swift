@@ -10,4 +10,8 @@ enum AuthStrings {
     
     static let signUpResultNotificationRawName = "SignUpViewController.signUpResultNotification"
     static let signUpResultNotifInfoKey = "SignUpViewController.signUpResult"
+    
+    static let signUp = "Sign Up".localized()
+    static let email = "Email".localized()
+    static let password = "Password".localized()
 }
