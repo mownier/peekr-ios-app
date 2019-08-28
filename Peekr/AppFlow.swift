@@ -16,7 +16,8 @@ class AppFlow {
     
     init(window: UIWindow) {
         self.window = window
-        // TODO: Attach root
+        let navigationController = UINavigationController(rootViewController: createSignUpViewController())
+        self.window.rootViewController = navigationController
     }
     
     @discardableResult
@@ -49,8 +50,21 @@ class AppFlow {
         ]
     }
     
-    private func signUpResultObserverAction(_ result: Result<String>) {
-        // TOOD: Go to home
+    private func signUpResultObserverAction(_ result: Result<String>) -> Bool {
+        guard let rootScreen = window.rootViewController else {
+            return false
+        }
+
+        switch result {
+        case let .notOkay(error):
+            showSimpleAlertFrom(parent: rootScreen, message: error.localizedDescription, title: UIStrings.error)
+        
+        case .okay:
+            // TODO: Set rootViewController to Home
+            break
+        }
+        
+        return true
     }
 }
 
