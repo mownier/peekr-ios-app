@@ -17,6 +17,7 @@
 		48055B1C2316501800562F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48055B1B2316501800562F5B /* GoogleService-Info.plist */; };
 		48055B1F2316531800562F5B /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B1E2316531800562F5B /* SimpleAlert.swift */; };
 		48055B26231656EA00562F5B /* UIStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B25231656EA00562F5B /* UIStrings.swift */; };
+		481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB6F231CF6D800B36540 /* SignInViewController.swift */; };
 		485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39B2313CCF900A43130 /* SignUpService.swift */; };
 		485BA39E2313CD0700A43130 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39D2313CD0700A43130 /* Result.swift */; };
 		485BA3A02313CD8A00A43130 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39F2313CD8A00A43130 /* Either.swift */; };
@@ -44,9 +45,10 @@
 		48055B1323164A7300562F5B /* Broadcast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		48055B1723164DC000562F5B /* CoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreViewController.swift; sourceTree = "<group>"; };
 		48055B1923164E3D00562F5B /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
-		48055B1B2316501800562F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		48055B1B2316501800562F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Peekr/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		48055B1E2316531800562F5B /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		48055B25231656EA00562F5B /* UIStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStrings.swift; sourceTree = "<group>"; };
+		481DDB6F231CF6D800B36540 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		485BA39B2313CCF900A43130 /* SignUpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		485BA39D2313CD0700A43130 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		485BA39F2313CD8A00A43130 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				48055B1923164E3D00562F5B /* AuthBuilder.swift */,
 				48055B0A23161B2600562F5B /* AuthStrings.swift */,
 				48055B06231617CC00562F5B /* SignUpViewController.swift */,
+				481DDB6F231CF6D800B36540 /* SignInViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -123,6 +126,21 @@
 				48055B25231656EA00562F5B /* UIStrings.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		481DDB6E231CF67600B36540 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				48055B1B2316501800562F5B /* GoogleService-Info.plist */,
+				48A22AFF2313887C0006F4AB /* Info.plist */,
+				48A22AF32313887B0006F4AB /* AppDelegate.swift */,
+				48055B10231622E000562F5B /* AppFlow.swift */,
+				48A22AF52313887B0006F4AB /* ViewController.swift */,
+				48A22AFA2313887C0006F4AB /* Assets.xcassets */,
+				48A22AFC2313887C0006F4AB /* LaunchScreen.storyboard */,
+				48A22AF72313887B0006F4AB /* Main.storyboard */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 		485BA3922313C93500A43130 /* Core */ = {
@@ -182,16 +200,9 @@
 		48A22AF22313887B0006F4AB /* Peekr */ = {
 			isa = PBXGroup;
 			children = (
-				48055B1B2316501800562F5B /* GoogleService-Info.plist */,
-				48A22AFF2313887C0006F4AB /* Info.plist */,
-				48A22AF32313887B0006F4AB /* AppDelegate.swift */,
-				48055B10231622E000562F5B /* AppFlow.swift */,
-				48A22AF52313887B0006F4AB /* ViewController.swift */,
-				48A22AFA2313887C0006F4AB /* Assets.xcassets */,
+				481DDB6E231CF67600B36540 /* App */,
 				48055B042316177D00562F5B /* Components */,
 				485BA3922313C93500A43130 /* Core */,
-				48A22AFC2313887C0006F4AB /* LaunchScreen.storyboard */,
-				48A22AF72313887B0006F4AB /* Main.storyboard */,
 			);
 			path = Peekr;
 			sourceTree = "<group>";
@@ -376,6 +387,7 @@
 				48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */,
 				48055B1F2316531800562F5B /* SimpleAlert.swift in Sources */,
 				48055B0B23161B2600562F5B /* AuthStrings.swift in Sources */,
+				481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */,
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */,
 				48055B26231656EA00562F5B /* UIStrings.swift in Sources */,
