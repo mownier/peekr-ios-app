@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Landing View Controller-->
+        <scene sceneID="BZQ-zF-paa">
+            <objects>
+                <viewController storyboardIdentifier="LandingViewController" id="6DR-jW-fDb" customClass="LandingViewController" customModule="Peekr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZSb-Yg-F7g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDN-ko-cNp">
+                                <rect key="frame" x="24" y="603" width="327" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.65943402949999996" blue="0.6298921851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LM1-uf-1Yd"/>
+                                </constraints>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapSignUpButton" destination="6DR-jW-fDb" eventType="touchUpInside" id="05Q-q9-G3i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuo-gZ-ktK">
+                                <rect key="frame" x="24" y="539" width="327" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.4793452024" blue="0.99908632040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mng-0o-URK"/>
+                                </constraints>
+                                <state key="normal" title="Sign in">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapSignInButton" destination="6DR-jW-fDb" eventType="touchUpInside" id="ge8-Ov-gHJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peekr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acS-yC-2rq">
+                                <rect key="frame" x="160" y="44" width="55" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MDN-ko-cNp" firstAttribute="leading" secondItem="AC8-Pc-nQI" secondAttribute="leading" constant="24" id="Eff-Oi-ZR5"/>
+                            <constraint firstItem="AC8-Pc-nQI" firstAttribute="trailing" secondItem="MDN-ko-cNp" secondAttribute="trailing" constant="24" id="P0L-B1-6Nw"/>
+                            <constraint firstItem="acS-yC-2rq" firstAttribute="centerX" secondItem="ZSb-Yg-F7g" secondAttribute="centerX" id="VOx-ZP-C3V"/>
+                            <constraint firstItem="AC8-Pc-nQI" firstAttribute="bottom" secondItem="MDN-ko-cNp" secondAttribute="bottom" constant="24" id="XiL-vQ-A6u"/>
+                            <constraint firstItem="acS-yC-2rq" firstAttribute="top" secondItem="AC8-Pc-nQI" secondAttribute="top" constant="24" id="YcP-FV-2xx"/>
+                            <constraint firstItem="nuo-gZ-ktK" firstAttribute="leading" secondItem="AC8-Pc-nQI" secondAttribute="leading" constant="24" id="bBh-gd-9I4"/>
+                            <constraint firstItem="AC8-Pc-nQI" firstAttribute="trailing" secondItem="nuo-gZ-ktK" secondAttribute="trailing" constant="24" id="ciU-Bp-xXn"/>
+                            <constraint firstItem="MDN-ko-cNp" firstAttribute="top" secondItem="nuo-gZ-ktK" secondAttribute="bottom" constant="24" id="u0O-4x-6hb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AC8-Pc-nQI"/>
+                    </view>
+                    <connections>
+                        <outlet property="signInButton" destination="nuo-gZ-ktK" id="Efd-65-ZIU"/>
+                        <outlet property="signUpButton" destination="MDN-ko-cNp" id="301-2K-K4U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yqb-LH-PXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1844" y="-70"/>
+        </scene>
+    </scenes>
+</document>
