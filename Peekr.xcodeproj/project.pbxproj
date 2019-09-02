@@ -18,6 +18,10 @@
 		48055B1F2316531800562F5B /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B1E2316531800562F5B /* SimpleAlert.swift */; };
 		48055B26231656EA00562F5B /* UIStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B25231656EA00562F5B /* UIStrings.swift */; };
 		481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB6F231CF6D800B36540 /* SignInViewController.swift */; };
+		481DDB73231CFD9700B36540 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DDB72231CFD9700B36540 /* Onboarding.storyboard */; };
+		481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB74231CFDB800B36540 /* LandingViewController.swift */; };
+		481DDB77231CFE4600B36540 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB76231CFE4600B36540 /* OnboardingStrings.swift */; };
+		481DDB79231D02AD00B36540 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB78231D02AD00B36540 /* OnboardingBuilder.swift */; };
 		485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39B2313CCF900A43130 /* SignUpService.swift */; };
 		485BA39E2313CD0700A43130 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39D2313CD0700A43130 /* Result.swift */; };
 		485BA3A02313CD8A00A43130 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39F2313CD8A00A43130 /* Either.swift */; };
@@ -49,6 +53,10 @@
 		48055B1E2316531800562F5B /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		48055B25231656EA00562F5B /* UIStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStrings.swift; sourceTree = "<group>"; };
 		481DDB6F231CF6D800B36540 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		481DDB72231CFD9700B36540 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		481DDB74231CFDB800B36540 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		481DDB76231CFE4600B36540 /* OnboardingStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStrings.swift; sourceTree = "<group>"; };
+		481DDB78231D02AD00B36540 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		485BA39B2313CCF900A43130 /* SignUpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		485BA39D2313CD0700A43130 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		485BA39F2313CD8A00A43130 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				48055B05231617A300562F5B /* Auth */,
+				481DDB71231CFD6800B36540 /* Onboarding */,
 				48055B1D2316530700562F5B /* UI */,
 			);
 			path = Components;
@@ -141,6 +150,17 @@
 				48A22AF72313887B0006F4AB /* Main.storyboard */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		481DDB71231CFD6800B36540 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				481DDB72231CFD9700B36540 /* Onboarding.storyboard */,
+				481DDB74231CFDB800B36540 /* LandingViewController.swift */,
+				481DDB76231CFE4600B36540 /* OnboardingStrings.swift */,
+				481DDB78231D02AD00B36540 /* OnboardingBuilder.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		485BA3922313C93500A43130 /* Core */ = {
@@ -288,6 +308,7 @@
 				48055B09231617D900562F5B /* Auth.storyboard in Resources */,
 				48A22AFE2313887C0006F4AB /* LaunchScreen.storyboard in Resources */,
 				48055B1C2316501800562F5B /* GoogleService-Info.plist in Resources */,
+				481DDB73231CFD9700B36540 /* Onboarding.storyboard in Resources */,
 				48A22AFB2313887C0006F4AB /* Assets.xcassets in Resources */,
 				48A22AF92313887B0006F4AB /* Main.storyboard in Resources */,
 			);
@@ -380,7 +401,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
+				481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */,
 				48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */,
+				481DDB77231CFE4600B36540 /* OnboardingStrings.swift in Sources */,
 				485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */,
 				48055B1A23164E3D00562F5B /* AuthBuilder.swift in Sources */,
 				485BA39E2313CD0700A43130 /* Result.swift in Sources */,
@@ -391,6 +414,7 @@
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */,
 				48055B26231656EA00562F5B /* UIStrings.swift in Sources */,
+				481DDB79231D02AD00B36540 /* OnboardingBuilder.swift in Sources */,
 				485BA3A02313CD8A00A43130 /* Either.swift in Sources */,
 				48055B1423164A7300562F5B /* Broadcast.swift in Sources */,
 				485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */,
