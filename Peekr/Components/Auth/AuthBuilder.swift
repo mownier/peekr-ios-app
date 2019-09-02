@@ -9,3 +9,7 @@
 func createSignUpViewController() -> SignUpViewController {
     return viewControllerFromStoryboardWith(name: "Auth")
 }
+
+func createSignInViewController() -> SignInViewController {
+    return viewControllerFromStoryboardWith(name: "Auth")
+}
