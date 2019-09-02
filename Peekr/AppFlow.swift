@@ -11,12 +11,13 @@ import UIKit
 class AppFlow {
     
     private var signUpResultObserver: NSObjectProtocol?
+    private var signInResultObserver: NSObjectProtocol?
     
     private let window: UIWindow
     
     init(window: UIWindow) {
         self.window = window
-        let navigationController = UINavigationController(rootViewController: createSignUpViewController())
+        let navigationController = UINavigationController(rootViewController: createSignInViewController())
         self.window.rootViewController = navigationController
     }
     
@@ -26,6 +27,12 @@ class AppFlow {
             name: SignUpViewController.signUpResultNotification,
             action: signUpResultObserverAction
         )
+        
+        signInResultObserver = registerBroadcastObserverWith(
+            name: SignInViewController.signInResultNotification,
+            action: signInResultObserverAction
+        )
+        
         return allObservers()
             .map({ $0 != nil })
             .reduce(true, { result, item -> Bool in
@@ -36,17 +43,20 @@ class AppFlow {
     @discardableResult
     func unregisterObservers() -> Bool {
         let isOkay = unregisterBroadcastObserversWith(pairs:
-            pairWith(first: SignUpViewController.signUpResultNotification, second: signUpResultObserver)
+            pairWith(first: SignUpViewController.signUpResultNotification, second: signUpResultObserver),
+            pairWith(first: SignInViewController.signInResultNotification, second: signInResultObserver)
         )
         
         signUpResultObserver = nil
+        signInResultObserver = nil
         
         return isOkay
     }
     
     func allObservers() -> [NSObjectProtocol?] {
         return [
-            signUpResultObserver
+            signUpResultObserver,
+            signInResultObserver
         ]
     }
     
@@ -66,6 +76,23 @@ class AppFlow {
         
         return true
     }
+    
+    private func signInResultObserverAction(_ result: Result<String>) -> Bool {
+        guard let rootScreen = window.rootViewController else {
+            return false
+        }
+        
+        switch result {
+        case let .notOkay(error):
+            showSimpleAlertFrom(parent: rootScreen, message: error.localizedDescription, title: UIStrings.error)
+            
+        case .okay:
+            // TODO: Set rootViewController to Home
+            break
+        }
+        
+        return true
+    }
 }
 
 func appFlowWith(window: UIWindow?) -> AppFlow? {
@@ -74,4 +101,3 @@ func appFlowWith(window: UIWindow?) -> AppFlow? {
     }
     return AppFlow(window: window!)
 }
-
