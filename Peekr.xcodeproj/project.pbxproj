@@ -17,6 +17,9 @@
 		48055B1C2316501800562F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48055B1B2316501800562F5B /* GoogleService-Info.plist */; };
 		48055B1F2316531800562F5B /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B1E2316531800562F5B /* SimpleAlert.swift */; };
 		48055B26231656EA00562F5B /* UIStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B25231656EA00562F5B /* UIStrings.swift */; };
+		48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48156D52231E445A00AA4B06 /* AuthFlow.swift */; };
+		48156D55231E485A00AA4B06 /* BaseFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48156D54231E485A00AA4B06 /* BaseFlow.swift */; };
+		48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48156D56231E48AA00AA4B06 /* OnboardingFlow.swift */; };
 		481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB6F231CF6D800B36540 /* SignInViewController.swift */; };
 		481DDB73231CFD9700B36540 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 481DDB72231CFD9700B36540 /* Onboarding.storyboard */; };
 		481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB74231CFDB800B36540 /* LandingViewController.swift */; };
@@ -52,6 +55,9 @@
 		48055B1B2316501800562F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Peekr/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		48055B1E2316531800562F5B /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		48055B25231656EA00562F5B /* UIStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStrings.swift; sourceTree = "<group>"; };
+		48156D52231E445A00AA4B06 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
+		48156D54231E485A00AA4B06 /* BaseFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlow.swift; sourceTree = "<group>"; };
+		48156D56231E48AA00AA4B06 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		481DDB6F231CF6D800B36540 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		481DDB72231CFD9700B36540 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		481DDB74231CFDB800B36540 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -137,13 +143,23 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		48156D51231E443C00AA4B06 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				48055B10231622E000562F5B /* AppFlow.swift */,
+				48156D52231E445A00AA4B06 /* AuthFlow.swift */,
+				48156D54231E485A00AA4B06 /* BaseFlow.swift */,
+				48156D56231E48AA00AA4B06 /* OnboardingFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		481DDB6E231CF67600B36540 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				48055B1B2316501800562F5B /* GoogleService-Info.plist */,
 				48A22AFF2313887C0006F4AB /* Info.plist */,
 				48A22AF32313887B0006F4AB /* AppDelegate.swift */,
-				48055B10231622E000562F5B /* AppFlow.swift */,
 				48A22AF52313887B0006F4AB /* ViewController.swift */,
 				48A22AFA2313887C0006F4AB /* Assets.xcassets */,
 				48A22AFC2313887C0006F4AB /* LaunchScreen.storyboard */,
@@ -223,6 +239,7 @@
 				481DDB6E231CF67600B36540 /* App */,
 				48055B042316177D00562F5B /* Components */,
 				485BA3922313C93500A43130 /* Core */,
+				48156D51231E443C00AA4B06 /* Flow */,
 			);
 			path = Peekr;
 			sourceTree = "<group>";
@@ -400,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */,
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
 				481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */,
 				48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */,
@@ -411,10 +429,12 @@
 				48055B1F2316531800562F5B /* SimpleAlert.swift in Sources */,
 				48055B0B23161B2600562F5B /* AuthStrings.swift in Sources */,
 				481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */,
+				48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */,
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */,
 				48055B26231656EA00562F5B /* UIStrings.swift in Sources */,
 				481DDB79231D02AD00B36540 /* OnboardingBuilder.swift in Sources */,
+				48156D55231E485A00AA4B06 /* BaseFlow.swift in Sources */,
 				485BA3A02313CD8A00A43130 /* Either.swift in Sources */,
 				48055B1423164A7300562F5B /* Broadcast.swift in Sources */,
 				485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */,

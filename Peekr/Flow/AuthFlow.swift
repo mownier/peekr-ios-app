@@ -1,30 +1,19 @@
 //
-//  AppFlow.swift
+//  AuthFlow.swift
 //  Peekr
 //
-//  Created by Mounir Ybanez on 8/28/19.
+//  Created by Mounir Ybanez on 9/3/19.
 //  Copyright © 2019 Nir. All rights reserved.
 //
 
 import UIKit
 
-class AppFlow {
+class AuthFlow: BaseFlowDefault {
     
     private var signUpResultObserver: NSObjectProtocol?
     private var signInResultObserver: NSObjectProtocol?
-    private var landingToSignInScreenObserver: NSObjectProtocol?
-    private var landingToSignUpScreenObserver: NSObjectProtocol?
     
-    private let window: UIWindow
-    
-    init(window: UIWindow) {
-        self.window = window
-        let navigationController = UINavigationController(rootViewController: createLandingViewController())
-        self.window.rootViewController = navigationController
-    }
-    
-    @discardableResult
-    func registerObservers() -> Bool {
+    override func registerObservers() -> Bool {
         signUpResultObserver = registerBroadcastObserverWith(
             name: SignUpViewController.signUpResultNotification,
             action: signUpResultObserverAction
@@ -35,62 +24,37 @@ class AppFlow {
             action: signInResultObserverAction
         )
         
-        landingToSignInScreenObserver = registerBroadcastObserverWith(
-            name: LandingViewController.goToSignScreenNotification,
-            action: {
-                showSignInScreenUsing(
-                    navigationController: self.window.rootViewController as? UINavigationController
-                )
-        })
-        
-        landingToSignUpScreenObserver = registerBroadcastObserverWith(
-            name: LandingViewController.goToSignUpScreenNotification,
-            action: {
-                showSignUpScreenUsing(
-                    navigationController: self.window.rootViewController as? UINavigationController
-                )
-        })
-        
-        return allObservers()
-            .map({ $0 != nil })
-            .reduce(true, { result, item -> Bool in
-                return result && item
-            })
+        return super.registerObservers()
     }
     
-    @discardableResult
-    func unregisterObservers() -> Bool {
+    override  func unregisterObservers() -> Bool {
         let isOkay = unregisterBroadcastObserversWith(pairs:
             pairWith(first: SignUpViewController.signUpResultNotification, second: signUpResultObserver),
-            pairWith(first: SignInViewController.signInResultNotification, second: signInResultObserver),
-            pairWith(first: LandingViewController.goToSignScreenNotification, second: landingToSignInScreenObserver),
-            pairWith(first: LandingViewController.goToSignUpScreenNotification, second: landingToSignUpScreenObserver)
+            pairWith(first: SignInViewController.signInResultNotification, second: signInResultObserver)
         )
         
         signUpResultObserver = nil
         signInResultObserver = nil
-        landingToSignInScreenObserver = nil
-        landingToSignUpScreenObserver = nil
         
         return isOkay
     }
     
-    func allObservers() -> [NSObjectProtocol?] {
+    override func allObservers() -> [NSObjectProtocol?] {
         return [
             signUpResultObserver,
             signInResultObserver
         ]
     }
-    
+
     private func signUpResultObserverAction(_ result: Result<String>) -> Bool {
         guard let rootScreen = window.rootViewController else {
             return false
         }
-
+        
         switch result {
         case let .notOkay(error):
             showSimpleAlertFrom(parent: rootScreen, message: error.localizedDescription, title: UIStrings.error)
-        
+            
         case .okay:
             // TODO: Set rootViewController to Home
             break
@@ -117,15 +81,8 @@ class AppFlow {
     }
 }
 
-func appFlowWith(window: UIWindow?) -> AppFlow? {
-    guard window != nil else {
-        return nil
-    }
-    return AppFlow(window: window!)
-}
-
 @discardableResult
-private func showSignInScreenUsing(navigationController: UINavigationController?) -> SignInViewController? {
+func showSignInScreenUsing(navigationController: UINavigationController?) -> SignInViewController? {
     guard let nav = navigationController else {
         return nil
     }
@@ -135,7 +92,8 @@ private func showSignInScreenUsing(navigationController: UINavigationController?
     return screen
 }
 
-private func showSignUpScreenUsing(navigationController: UINavigationController?) -> SignUpViewController? {
+@discardableResult
+func showSignUpScreenUsing(navigationController: UINavigationController?) -> SignUpViewController? {
     guard let nav = navigationController else {
         return nil
     }
