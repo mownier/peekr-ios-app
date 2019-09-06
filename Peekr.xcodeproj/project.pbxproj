@@ -42,6 +42,11 @@
 		48B0732D2322211C008E6500 /* HomePagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0732C2322211C008E6500 /* HomePagingViewController.swift */; };
 		48B0732F232230FB008E6500 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B0732E232230FB008E6500 /* Colors.xcassets */; };
 		48B07331232236B8008E6500 /* HomeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B07330232236B8008E6500 /* HomeStrings.swift */; };
+		48B073342322397B008E6500 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48B073332322397B008E6500 /* Profile.storyboard */; };
+		48B0733623223990008E6500 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0733523223990008E6500 /* MyProfileViewController.swift */; };
+		48B0733823223D15008E6500 /* ProfileStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0733723223D15008E6500 /* ProfileStrings.swift */; };
+		48B0733A23223F2A008E6500 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0733923223F2A008E6500 /* ProfileBuilder.swift */; };
+		48B0733C23223F78008E6500 /* ProfileFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0733B23223F78008E6500 /* ProfileFlow.swift */; };
 		48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320C23151653009B2EA6 /* CoreStrings.swift */; };
 		48BA320F23151930009B2EA6 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320E23151930009B2EA6 /* SignInService.swift */; };
 		48DFA804231F9DFC0020BE83 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48DFA803231F9DFC0020BE83 /* Home.storyboard */; };
@@ -89,6 +94,11 @@
 		48B0732C2322211C008E6500 /* HomePagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePagingViewController.swift; sourceTree = "<group>"; };
 		48B0732E232230FB008E6500 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		48B07330232236B8008E6500 /* HomeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStrings.swift; sourceTree = "<group>"; };
+		48B073332322397B008E6500 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		48B0733523223990008E6500 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		48B0733723223D15008E6500 /* ProfileStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStrings.swift; sourceTree = "<group>"; };
+		48B0733923223F2A008E6500 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
+		48B0733B23223F78008E6500 /* ProfileFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlow.swift; sourceTree = "<group>"; };
 		48BA320C23151653009B2EA6 /* CoreStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStrings.swift; sourceTree = "<group>"; };
 		48BA320E23151930009B2EA6 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		48DFA803231F9DFC0020BE83 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -114,6 +124,7 @@
 				48055B05231617A300562F5B /* Auth */,
 				48DFA802231F9DEA0020BE83 /* Home */,
 				481DDB71231CFD6800B36540 /* Onboarding */,
+				48B0733223223965008E6500 /* Profile */,
 				48055B1D2316530700562F5B /* UI */,
 			);
 			path = Components;
@@ -167,6 +178,7 @@
 				48156D54231E485A00AA4B06 /* BaseFlow.swift */,
 				48B0732A23220C5D008E6500 /* HomeFlow.swift */,
 				48156D56231E48AA00AA4B06 /* OnboardingFlow.swift */,
+				48B0733B23223F78008E6500 /* ProfileFlow.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -259,6 +271,17 @@
 				48156D51231E443C00AA4B06 /* Flow */,
 			);
 			path = Peekr;
+			sourceTree = "<group>";
+		};
+		48B0733223223965008E6500 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				48B073332322397B008E6500 /* Profile.storyboard */,
+				48B0733523223990008E6500 /* MyProfileViewController.swift */,
+				48B0733923223F2A008E6500 /* ProfileBuilder.swift */,
+				48B0733723223D15008E6500 /* ProfileStrings.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		48DFA802231F9DEA0020BE83 /* Home */ = {
@@ -357,6 +380,7 @@
 				48055B1C2316501800562F5B /* GoogleService-Info.plist in Resources */,
 				481DDB73231CFD9700B36540 /* Onboarding.storyboard in Resources */,
 				48B0732F232230FB008E6500 /* Colors.xcassets in Resources */,
+				48B073342322397B008E6500 /* Profile.storyboard in Resources */,
 				48A22AFB2313887C0006F4AB /* Assets.xcassets in Resources */,
 				48A22AF92313887B0006F4AB /* Main.storyboard in Resources */,
 			);
@@ -459,9 +483,12 @@
 				48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */,
 				48055B1F2316531800562F5B /* SimpleAlert.swift in Sources */,
 				48055B0B23161B2600562F5B /* AuthStrings.swift in Sources */,
+				48B0733A23223F2A008E6500 /* ProfileBuilder.swift in Sources */,
 				48B07331232236B8008E6500 /* HomeStrings.swift in Sources */,
 				481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */,
 				48B0732B23220C5D008E6500 /* HomeFlow.swift in Sources */,
+				48B0733623223990008E6500 /* MyProfileViewController.swift in Sources */,
+				48B0733823223D15008E6500 /* ProfileStrings.swift in Sources */,
 				48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */,
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				48DFA806231F9E4C0020BE83 /* HomeViewController.swift in Sources */,
@@ -479,6 +506,7 @@
 				48055B1823164DC000562F5B /* CoreViewController.swift in Sources */,
 				485BA3A22313CDCE00A43130 /* Pair.swift in Sources */,
 				48B0732D2322211C008E6500 /* HomePagingViewController.swift in Sources */,
+				48B0733C23223F78008E6500 /* ProfileFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
