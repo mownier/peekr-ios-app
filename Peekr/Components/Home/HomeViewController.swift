@@ -44,6 +44,11 @@ class HomeViewController: UIViewController {
         pagingController?.dataSource = self
         pagingController?.delegate = self
         performButton(tabBarData.first?.first)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.onTapAvatar))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.addGestureRecognizer(tap)
+        avatarImageView.isUserInteractionEnabled = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,6 +73,11 @@ class HomeViewController: UIViewController {
             return .forward
         }
         return .reverse
+    }
+    
+    @objc
+    private func onTapAvatar() {
+        broadcastWith(name: HomeViewController.showMyProfileScreenNotification)
     }
     
     @objc
@@ -110,6 +120,8 @@ class HomeViewController: UIViewController {
         let defaultImageName: String
         let screen: (HomeViewController) -> UIViewController
     }
+    
+    static let showMyProfileScreenNotification = Notification.Name(rawValue: HomeStrings.showMyProfileScreenNotificationRawName)
 }
 
 extension HomeViewController: UIPageViewControllerDataSource {
