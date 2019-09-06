@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AppFlow: BaseFlowDefault {
     
@@ -19,7 +20,12 @@ class AppFlow: BaseFlowDefault {
         
         super.init(window: window)
 
-        makeLandingScreenAsRootOf(window: window)
+        if Auth.auth().currentUser == nil {
+            makeLandingScreenAsRootOf(window: window)
+            
+        } else {
+            makeHomeScreenAsRootOf(window: window)
+        }
     }
     
     @discardableResult
