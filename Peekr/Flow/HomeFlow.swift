@@ -15,10 +15,8 @@ class HomeFlow: BaseFlowDefault {
     override func registerObservers() -> Bool {
         showMyProfileScreenObserver = registerBroadcastObserverWith(
             name: HomeViewController.showMyProfileScreenNotification,
-            action: {
-                // TODO: Show my profile screen
-                print("TODO: Show my profile screen")
-        })
+            action: showMyProfileScreenAction
+        )
         
         return super.registerObservers()
     }
@@ -37,6 +35,10 @@ class HomeFlow: BaseFlowDefault {
         return [
             showMyProfileScreenObserver
         ]
+    }
+    
+    private func showMyProfileScreenAction(parent: UIViewController) -> Bool {
+        return showMyProfileScreenFrom(parent: parent) != nil
     }
 }
 
