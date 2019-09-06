@@ -8,6 +8,38 @@
 
 import UIKit
 
+class HomeFlow: BaseFlowDefault {
+    
+    private var showMyProfileScreenObserver: NSObjectProtocol?
+    
+    override func registerObservers() -> Bool {
+        showMyProfileScreenObserver = registerBroadcastObserverWith(
+            name: HomeViewController.showMyProfileScreenNotification,
+            action: {
+                // TODO: Show my profile screen
+                print("TODO: Show my profile screen")
+        })
+        
+        return super.registerObservers()
+    }
+    
+    override func unregisterObservers() -> Bool {
+        let isOkay = unregisterBroadcastObserversWith(pairs:
+            pairWith(first: HomeViewController.showMyProfileScreenNotification, second: showMyProfileScreenObserver)
+        )
+        
+        showMyProfileScreenObserver = nil
+        
+        return isOkay
+    }
+    
+    override func allObservers() -> [NSObjectProtocol?] {
+        return [
+            showMyProfileScreenObserver
+        ]
+    }
+}
+
 @discardableResult
 func makeHomeScreenAsRootOf(window: UIWindow) -> HomeViewController {
     let screen = createHomeViewControllerWith(tabBarItems: [
