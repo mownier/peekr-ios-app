@@ -32,6 +32,7 @@
 		485BA3A22313CDCE00A43130 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A12313CDCE00A43130 /* Pair.swift */; };
 		485BA3A42313CE1300A43130 /* Triple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A32313CE1300A43130 /* Triple.swift */; };
 		485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA3A52313CF5C00A43130 /* CoreError.swift */; };
+		4876B87A2323473200512784 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876B8792323473200512784 /* Colors.swift */; };
 		48792E722316138500223DF8 /* SignOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48792E712316138500223DF8 /* SignOutService.swift */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
@@ -82,6 +83,7 @@
 		485BA3A12313CDCE00A43130 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
 		485BA3A32313CE1300A43130 /* Triple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triple.swift; sourceTree = "<group>"; };
 		485BA3A52313CF5C00A43130 /* CoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreError.swift; sourceTree = "<group>"; };
+		4876B8792323473200512784 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		48792E712316138500223DF8 /* SignOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutService.swift; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		48055B1D2316530700562F5B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4876B8792323473200512784 /* Colors.swift */,
 				48055B1E2316531800562F5B /* SimpleAlert.swift */,
 				48055B25231656EA00562F5B /* UIStrings.swift */,
 				48B0732E232230FB008E6500 /* Colors.xcassets */,
@@ -473,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */,
+				4876B87A2323473200512784 /* Colors.swift in Sources */,
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
 				481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */,
 				48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */,
@@ -656,6 +660,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4WBRGV5Z9M;
 				INFOPLIST_FILE = Peekr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -675,6 +680,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4WBRGV5Z9M;
 				INFOPLIST_FILE = Peekr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
