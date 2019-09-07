@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
     
     @objc
     private func onTapAvatar() {
-        broadcastWith(name: HomeViewController.showMyProfileScreenNotification)
+        broadcastWith(name: HomeViewController.showMyProfileScreenNotification, info: self)
     }
     
     @objc
