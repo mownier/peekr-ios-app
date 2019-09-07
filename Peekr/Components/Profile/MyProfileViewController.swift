@@ -27,8 +27,9 @@ class MyProfileViewController: UIViewController {
     }
     
     @IBAction func onTapSignOutButton() {
-        
+        broadcastWith(name: MyProfileViewController.signOutConfirmationNotification, info: self)
     }
     
     static let dismissNotification = Notification.Name(rawValue: ProfileStrings.dismissNotificationRawName)
+    static let signOutConfirmationNotification = Notification.Name(rawValue: ProfileStrings.signOutConfirmationNotificationRawName)
 }
