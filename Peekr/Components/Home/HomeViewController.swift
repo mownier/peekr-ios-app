@@ -39,8 +39,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
-        
-        pagingController?.view.backgroundColor = UIColor(named: "Gray2")
+        avatarImageView.backgroundColor = Colors.gray1
+        pagingController?.view.backgroundColor = Colors.gray2
         pagingController?.dataSource = self
         pagingController?.delegate = self
         performButton(tabBarData.first?.first)
