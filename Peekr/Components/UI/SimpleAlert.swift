@@ -16,3 +16,22 @@ public func showSimpleAlertFrom(parent: UIViewController, message: String, title
     parent.present(alert, animated: true, completion: nil)
     return alert
 }
+
+@discardableResult
+public func showConfirmationAlertFrom(parent: UIViewController, message: String, title: String, positiveAction: (() -> Void)? = nil, negativeAction: (() -> Void)? = nil) -> UIAlertController {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let positiveAlertAction = UIAlertAction(
+        title: CoreStrings.ok,
+        style: .default,
+        handler: { _ in positiveAction?() }
+    )
+    let negativeAlertAction = UIAlertAction(
+        title: UIStrings.cancel,
+        style: .cancel,
+        handler: { _ in negativeAction?() }
+    )
+    alert.addAction(negativeAlertAction)
+    alert.addAction(positiveAlertAction)
+    parent.present(alert, animated: true, completion: nil)
+    return alert
+}
