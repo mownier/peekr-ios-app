@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Profile View Controller-->
+        <scene sceneID="KV5-7D-tce">
+            <objects>
+                <viewController storyboardIdentifier="MyProfileViewController" id="rWG-RZ-agX" customClass="MyProfileViewController" customModule="Peekr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0TJ-E2-t7j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKI-Ev-H8r" userLabel="Sign Out Button">
+                                <rect key="frame" x="40" y="599" width="295" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.65943402949999996" blue="0.6298921851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nUE-Sp-hE0"/>
+                                </constraints>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapSignOutButton" destination="rWG-RZ-agX" eventType="touchUpInside" id="mnU-DL-hOd"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-A1-PGp" userLabel="Avatar Image View">
+                                <rect key="frame" x="127.5" y="56" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.64313725489999995" green="0.66274509800000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="6pZ-1K-vY9"/>
+                                    <constraint firstAttribute="height" constant="120" id="tXJ-ys-sc9"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRe-9R-DDr" userLabel="Close Button">
+                                <rect key="frame" x="16" y="36" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="0iT-Dw-15V"/>
+                                    <constraint firstAttribute="width" constant="36" id="7oX-Hv-lE5"/>
+                                </constraints>
+                                <state key="normal" image="icon-cross"/>
+                                <connections>
+                                    <action selector="onTapCloseButton" destination="rWG-RZ-agX" eventType="touchUpInside" id="ZoE-bc-1g4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hKI-Ev-H8r" firstAttribute="leading" secondItem="amS-Kr-uTw" secondAttribute="leading" constant="40" id="JsB-DJ-c3j"/>
+                            <constraint firstItem="nhL-A1-PGp" firstAttribute="top" secondItem="amS-Kr-uTw" secondAttribute="top" constant="36" id="KHe-Wb-yFQ"/>
+                            <constraint firstItem="GRe-9R-DDr" firstAttribute="leading" secondItem="amS-Kr-uTw" secondAttribute="leading" constant="16" id="Ny8-xv-qGq"/>
+                            <constraint firstItem="nhL-A1-PGp" firstAttribute="centerX" secondItem="0TJ-E2-t7j" secondAttribute="centerX" id="RRH-8e-Xct"/>
+                            <constraint firstItem="amS-Kr-uTw" firstAttribute="bottom" secondItem="hKI-Ev-H8r" secondAttribute="bottom" constant="24" id="TUN-QU-1XX"/>
+                            <constraint firstItem="amS-Kr-uTw" firstAttribute="trailing" secondItem="hKI-Ev-H8r" secondAttribute="trailing" constant="40" id="UFr-ro-5VF"/>
+                            <constraint firstItem="GRe-9R-DDr" firstAttribute="top" secondItem="amS-Kr-uTw" secondAttribute="top" constant="16" id="h8I-dM-bbt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="amS-Kr-uTw"/>
+                    </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="nhL-A1-PGp" id="nLg-9L-vMD"/>
+                        <outlet property="closeButton" destination="GRe-9R-DDr" id="q10-w8-rtm"/>
+                        <outlet property="signOutButton" destination="hKI-Ev-H8r" id="eSj-fG-Lzs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRU-os-veZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-394" y="90"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-cross" width="10" height="10"/>
+    </resources>
+</document>

@@ -56,8 +56,7 @@ class AuthFlow: BaseFlowDefault {
             showSimpleAlertFrom(parent: rootScreen, message: error.localizedDescription, title: UIStrings.error)
             
         case .okay:
-            // TODO: Set rootViewController to Home
-            break
+            makeHomeScreenAsRootOf(window: window)
         }
         
         return true
@@ -73,8 +72,7 @@ class AuthFlow: BaseFlowDefault {
             showSimpleAlertFrom(parent: rootScreen, message: error.localizedDescription, title: UIStrings.error)
             
         case .okay:
-            // TODO: Set rootViewController to Home
-            break
+            makeHomeScreenAsRootOf(window: window)
         }
         
         return true
