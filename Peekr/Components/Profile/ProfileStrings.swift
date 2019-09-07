@@ -9,6 +9,8 @@
 enum ProfileStrings {
     
     static let dismissNotificationRawName = "MyProfileViewController.dismissNotification"
+    static let signOutConfirmationNotificationRawName = "MyProfileViewController.signOutConfirmationNotificationRawName"
     
     static let signOut = "Sign out".localized()
+    static let areYouSure = "Are you sure?".localized()
 }
