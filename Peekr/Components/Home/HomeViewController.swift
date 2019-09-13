@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tabBarView: UIView!
+    @IBOutlet weak var composerButton: UIButton!
     
     var tabBarItems: [TabBarItem] = []
     
@@ -38,6 +39,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        composerButton.layer.cornerRadius = composerButton.frame.width / 2
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         avatarImageView.backgroundColor = Colors.gray1
         pagingController?.view.backgroundColor = Colors.gray2
@@ -62,6 +65,10 @@ class HomeViewController: UIViewController {
             let tabBarButtonOrigin = CGPoint(x: CGFloat(item.offset) * tabBarButtonSize.width, y: 0)
             item.element.first.frame = CGRect(origin: tabBarButtonOrigin, size: tabBarButtonSize)
         }
+    }
+    
+    @IBAction func onTapComposerButton() {
+        broadcastWith(name: HomeViewController.showComposeScreenNotification, info: self)
     }
     
     private var pagingController: HomePagingViewController? {
@@ -122,6 +129,7 @@ class HomeViewController: UIViewController {
     }
     
     static let showMyProfileScreenNotification = Notification.Name(rawValue: HomeStrings.showMyProfileScreenNotificationRawName)
+    static let showComposeScreenNotification = Notification.Name(rawValue: HomeStrings.showComposeScreenNotificationRawName)
 }
 
 extension HomeViewController: UIPageViewControllerDataSource {
