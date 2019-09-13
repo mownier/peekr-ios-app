@@ -15,12 +15,14 @@ class AppFlow: BaseFlowDefault {
     private let onboarding: OnboardingFlow
     private let home: HomeFlow
     private let profile: ProfileFlow
+    private let composer: ComposerFlow
     
     override init(window: UIWindow) {
         auth = AuthFlow(window: window)
         onboarding = OnboardingFlow(window: window)
         home = HomeFlow(window: window)
         profile = ProfileFlow(window: window)
+        composer = ComposerFlow(window: window)
         
         super.init(window: window)
 
@@ -39,6 +41,7 @@ class AppFlow: BaseFlowDefault {
             onboarding.registerObservers(),
             home.registerObservers(),
             profile.registerObservers(),
+            composer.registerObservers(),
         ].reduce(true, { result, item -> Bool in
             return result && item
         })
@@ -51,6 +54,7 @@ class AppFlow: BaseFlowDefault {
             onboarding.unregisterObservers(),
             home.unregisterObservers(),
             profile.unregisterObservers(),
+            composer.unregisterObservers(),
         ].reduce(true, { result, item -> Bool in
             return result && item
         })
@@ -61,7 +65,8 @@ class AppFlow: BaseFlowDefault {
             auth.allObservers(),
             onboarding.allObservers(),
             home.allObservers(),
-            profile.allObservers()
+            profile.allObservers(),
+            composer.allObservers()
         ].joined().map({ $0 })
     }
 }
