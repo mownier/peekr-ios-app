@@ -11,11 +11,11 @@ import UIKit
 enum Colors {
     
     static var gray1: UIColor? {
-        return colorWith(name: "Gray1", default: UIColor(argb: 0xA4A9C2))
+        return colorWith(name: "Gray1", default: UIColor(argb: 0xFFA4A9C2))
     }
     
     static var gray2: UIColor? {
-        return colorWith(name: "Gray2", default: UIColor(argb: 0xF3F6FB))
+        return colorWith(name: "Gray2", default: UIColor(argb: 0xFFF3F6FB))
     }
     
     static func colorWith(name: String, default: UIColor? = nil) -> UIColor? {
