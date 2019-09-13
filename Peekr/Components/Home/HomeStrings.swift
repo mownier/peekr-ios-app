@@ -8,5 +8,6 @@
 
 enum HomeStrings {
     
-    static let showMyProfileScreenNotificationRawName = "HomeStrings.showMyProfileScreen"
+    static let showMyProfileScreenNotificationRawName = "HomeViewController.showMyProfileScreen"
+    static let showComposeScreenNotificationRawName = "HomeViewController.showComposeScreenNotification"
 }
