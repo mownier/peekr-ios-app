@@ -17,13 +17,96 @@
                     <view key="view" contentMode="scaleToFill" id="0aK-1H-NSm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3td-U0-hiA" userLabel="Message Text View">
+                                <rect key="frame" x="96" y="104" width="302" height="742"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.96470588239999999" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-dS-cpC" userLabel="Top Bar View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGV-Go-8j8">
+                                        <rect key="frame" x="52" y="6" width="67" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="Share To">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onTapTitleButton" destination="PGI-sO-OqI" eventType="touchUpInside" id="FZ9-XO-3qB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soB-am-p2n" userLabel="Close Button">
+                                        <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="6CC-Tb-qie"/>
+                                            <constraint firstAttribute="width" constant="36" id="AGw-gX-dYP"/>
+                                        </constraints>
+                                        <state key="normal" image="icon-cross"/>
+                                        <connections>
+                                            <action selector="onTapCloseButton" destination="PGI-sO-OqI" eventType="touchUpInside" id="Ip0-TR-jk2"/>
+                                            <action selector="onTapCloseButton" destination="d4o-OW-cRH" eventType="touchUpInside" id="dIx-SV-kIf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S9-Sv-9xa">
+                                        <rect key="frame" x="363" y="8.6666666666666643" width="35" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" red="0.0" green="0.65943402949999996" blue="0.6298921851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onTapDoneButton" destination="PGI-sO-OqI" eventType="touchUpInside" id="TCK-3L-lcM"/>
+                                            <action selector="onTapShareButton" destination="d4o-OW-cRH" eventType="touchUpInside" id="O3D-nn-45q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3mU-Jq-715"/>
+                                    <constraint firstItem="7S9-Sv-9xa" firstAttribute="centerY" secondItem="dtf-dS-cpC" secondAttribute="centerY" id="ARY-3h-hy7"/>
+                                    <constraint firstItem="kGV-Go-8j8" firstAttribute="centerY" secondItem="dtf-dS-cpC" secondAttribute="centerY" id="BPl-vE-HAy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="M6T-3r-lLl"/>
+                                    <constraint firstItem="soB-am-p2n" firstAttribute="centerY" secondItem="dtf-dS-cpC" secondAttribute="centerY" id="UnH-jl-sq2"/>
+                                    <constraint firstItem="soB-am-p2n" firstAttribute="leading" secondItem="dtf-dS-cpC" secondAttribute="leading" constant="8" id="fD7-7n-uya"/>
+                                    <constraint firstItem="kGV-Go-8j8" firstAttribute="leading" secondItem="soB-am-p2n" secondAttribute="trailing" constant="8" id="v13-Ac-5SR"/>
+                                    <constraint firstAttribute="trailing" secondItem="7S9-Sv-9xa" secondAttribute="trailing" constant="16" id="ydP-Sy-jXc"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="agk-ga-Xj0" userLabel="Thumbnail Image View">
+                                <rect key="frame" x="16" y="104" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.64313725489999995" green="0.66274509800000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="bra-Ho-rQs"/>
+                                    <constraint firstAttribute="height" constant="64" id="eB2-Zb-yuq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3td-U0-hiA" firstAttribute="top" secondItem="agk-ga-Xj0" secondAttribute="top" id="8ZO-Pw-Liw"/>
+                            <constraint firstItem="aMr-w5-trq" firstAttribute="bottom" secondItem="3td-U0-hiA" secondAttribute="bottom" constant="16" id="8ey-B1-o8u"/>
+                            <constraint firstItem="agk-ga-Xj0" firstAttribute="top" secondItem="dtf-dS-cpC" secondAttribute="bottom" constant="16" id="C7O-Do-r56"/>
+                            <constraint firstItem="3td-U0-hiA" firstAttribute="leading" secondItem="agk-ga-Xj0" secondAttribute="trailing" constant="16" id="Jkr-cO-ff1"/>
+                            <constraint firstItem="aMr-w5-trq" firstAttribute="trailing" secondItem="3td-U0-hiA" secondAttribute="trailing" constant="16" id="Loy-J3-R6f"/>
+                            <constraint firstItem="dtf-dS-cpC" firstAttribute="trailing" secondItem="aMr-w5-trq" secondAttribute="trailing" id="RJw-ei-D8d"/>
+                            <constraint firstItem="dtf-dS-cpC" firstAttribute="top" secondItem="aMr-w5-trq" secondAttribute="top" id="jC2-FJ-Hb5"/>
+                            <constraint firstItem="dtf-dS-cpC" firstAttribute="leading" secondItem="aMr-w5-trq" secondAttribute="leading" id="kKH-ME-mTs"/>
+                            <constraint firstItem="agk-ga-Xj0" firstAttribute="leading" secondItem="aMr-w5-trq" secondAttribute="leading" constant="16" id="o1M-91-h3n"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aMr-w5-trq"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="soB-am-p2n" id="bNr-CY-gQ9"/>
+                        <outlet property="messageTextView" destination="3td-U0-hiA" id="Hjb-R6-YYo"/>
+                        <outlet property="shareButton" destination="7S9-Sv-9xa" id="mYh-yE-Rd4"/>
+                        <outlet property="thumbnailImageView" destination="agk-ga-Xj0" id="fcV-VB-uhC"/>
+                        <outlet property="titleButton" destination="kGV-Go-8j8" id="YRh-BB-Jau"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHH-60-IuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="447" y="14"/>
+            <point key="canvasLocation" x="446.37681159420293" y="13.392857142857142"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="CO8-Yf-5NK">
