@@ -42,6 +42,7 @@
 		4876B88923237C2400512784 /* GalleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876B88823237C2400512784 /* GalleryCollectionCell.swift */; };
 		4876B88B23237FC600512784 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876B88A23237FC600512784 /* VideoView.swift */; };
 		48792E722316138500223DF8 /* SignOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48792E712316138500223DF8 /* SignOutService.swift */; };
+		487D77B3232B784600DA51B2 /* TranslationTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		4876B88823237C2400512784 /* GalleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionCell.swift; sourceTree = "<group>"; };
 		4876B88A23237FC600512784 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		48792E712316138500223DF8 /* SignOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutService.swift; sourceTree = "<group>"; };
+		487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTransitioning.swift; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A22AF52313887B0006F4AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				48055B25231656EA00562F5B /* UIStrings.swift */,
 				4876B88A23237FC600512784 /* VideoView.swift */,
 				48B0732E232230FB008E6500 /* Colors.xcassets */,
+				487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				48156D55231E485A00AA4B06 /* BaseFlow.swift in Sources */,
 				485BA3A02313CD8A00A43130 /* Either.swift in Sources */,
 				48055B1423164A7300562F5B /* Broadcast.swift in Sources */,
+				487D77B3232B784600DA51B2 /* TranslationTransitioning.swift in Sources */,
 				485BA3A62313CF5C00A43130 /* CoreError.swift in Sources */,
 				48792E722316138500223DF8 /* SignOutService.swift in Sources */,
 				485BA3A42313CE1300A43130 /* Triple.swift in Sources */,
