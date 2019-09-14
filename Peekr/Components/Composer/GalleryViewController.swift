@@ -93,7 +93,9 @@ class GalleryViewController: UIViewController {
         }
         
         let asset = assets[row]
-        videoView.playVideoFor(asset: asset)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.videoView.playVideoFor(asset: asset)
+        }
         selectedRow = row
         collectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
         
@@ -182,14 +184,14 @@ extension PHFetchResult where ObjectType == PHAsset {
         enumerateObjects { (asset, _, _) in
             assets.append(asset)
         }
-        return assets
+        return assets.sorted(by: { $0.modificationDate?.timeIntervalSince1970 ?? 0.0 > $1.modificationDate?.timeIntervalSince1970 ?? 0.0 })
     }
 }
 
 extension UIImageView {
     
     @discardableResult
-    fileprivate func setImageFor(asset: PHAsset?) -> Bool {
+    func setImageFor(asset: PHAsset?) -> Bool {
         guard asset != nil else {
             return false
         }
