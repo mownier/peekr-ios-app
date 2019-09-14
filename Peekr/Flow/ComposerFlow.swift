@@ -13,6 +13,7 @@ class ComposerFlow: BaseFlowDefault {
 
     private var dismissGalleryScreenObserver: NSObjectProtocol?
     private var doneGalleryScreenObserver: NSObjectProtocol?
+    private var cancelComposingObserver: NSObjectProtocol?
     
     override func registerObservers() -> Bool {
         dismissGalleryScreenObserver = registerBroadcastObserverWith(
@@ -25,17 +26,24 @@ class ComposerFlow: BaseFlowDefault {
             action: doneGalleryScreenAction
         )
         
+        cancelComposingObserver = registerBroadcastObserverWith(
+            name: PostComposerViewController.cancelComposingNotification,
+            action: cancelComposingAction
+        )
+        
         return super.registerObservers()
     }
     
     override func unregisterObservers() -> Bool {
         let isOkay = unregisterBroadcastObserversWith(pairs:
             pairWith(first: GalleryViewController.dismissNotification, second: dismissGalleryScreenObserver),
-            pairWith(first: GalleryViewController.doneNotification, second: doneGalleryScreenObserver)
+            pairWith(first: GalleryViewController.doneNotification, second: doneGalleryScreenObserver),
+            pairWith(first: PostComposerViewController.cancelComposingNotification, second: cancelComposingObserver)
         )
         
         dismissGalleryScreenObserver = nil
         doneGalleryScreenObserver = nil
+        cancelComposingObserver = nil
         
         return isOkay
     }
@@ -44,6 +52,7 @@ class ComposerFlow: BaseFlowDefault {
         return [
             dismissGalleryScreenObserver,
             doneGalleryScreenObserver,
+            cancelComposingObserver,
         ]
     }
     
@@ -52,8 +61,11 @@ class ComposerFlow: BaseFlowDefault {
     }
     
     private func doneGalleryScreenAction(_ pair: Pair<GalleryViewController, PHAsset>) -> Bool {
-        // TODO: Show post composer screen
-        return true
+        return showPostComposerScreen(with: pair) != nil
+    }
+    
+    private func cancelComposingAction(_ screen: PostComposerViewController) -> Bool {
+        return hidePostComposerScreen(screen)
     }
 }
 
@@ -71,4 +83,29 @@ func showGallertyScreenFrom(parent: UIViewController?) -> GalleryViewController?
     let screen = createGalleryViewController()
     parentScreen.present(screen, animated: true, completion: nil)
     return screen
+}
+
+@discardableResult
+func showPostComposerScreen(with pair: Pair<GalleryViewController, PHAsset>?) -> PostComposerViewController? {
+    guard let pair = pair else {
+        return nil
+    }
+    let parent = pair.first
+    let screen = createPostComposerViewController(asset: pair.second)
+    let transition = TranslationTransitioning()
+    transition.presentationDirection = .left
+    transition.dismissalDirection = .right
+    screen.transitioningDelegate = transition
+    parent.present(screen, animated: true, completion: nil)
+    return screen
+}
+
+@discardableResult
+func hidePostComposerScreen(_ screen: PostComposerViewController) -> Bool {
+    let transition = TranslationTransitioning()
+    transition.presentationDirection = .left
+    transition.dismissalDirection = .right
+    screen.transitioningDelegate = transition
+    screen.dismiss(animated: true, completion: nil)
+    return true
 }
