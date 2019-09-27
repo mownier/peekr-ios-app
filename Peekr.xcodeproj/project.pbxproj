@@ -48,6 +48,8 @@
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
 		48A22AFB2313887C0006F4AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AFA2313887C0006F4AB /* Assets.xcassets */; };
 		48A22AFE2313887C0006F4AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AFC2313887C0006F4AB /* LaunchScreen.storyboard */; };
+		48A8FC31233DE7F4009D55BB /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8FC30233DE7F4009D55BB /* ImageFile.swift */; };
+		48B06A17232C9AFB00EF7E90 /* FileUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B06A16232C9AFB00EF7E90 /* FileUploadService.swift */; };
 		48B0732B23220C5D008E6500 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0732A23220C5D008E6500 /* HomeFlow.swift */; };
 		48B0732D2322211C008E6500 /* HomePagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0732C2322211C008E6500 /* HomePagingViewController.swift */; };
 		48B0732F232230FB008E6500 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48B0732E232230FB008E6500 /* Colors.xcassets */; };
@@ -110,6 +112,8 @@
 		48A22AFA2313887C0006F4AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48A22AFD2313887C0006F4AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48A22AFF2313887C0006F4AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48A8FC30233DE7F4009D55BB /* ImageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFile.swift; sourceTree = "<group>"; };
+		48B06A16232C9AFB00EF7E90 /* FileUploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadService.swift; sourceTree = "<group>"; };
 		48B0732A23220C5D008E6500 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		48B0732C2322211C008E6500 /* HomePagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePagingViewController.swift; sourceTree = "<group>"; };
 		48B0732E232230FB008E6500 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				485BA3A12313CDCE00A43130 /* Pair.swift */,
 				485BA39D2313CD0700A43130 /* Result.swift */,
 				485BA3A32313CE1300A43130 /* Triple.swift */,
+				48A8FC30233DE7F4009D55BB /* ImageFile.swift */,
 			);
 			name = Models;
 			path = lib/core/src/Models;
@@ -261,9 +266,10 @@
 		485BA39A2313CCF900A43130 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				485BA39B2313CCF900A43130 /* SignUpService.swift */,
+				48B06A16232C9AFB00EF7E90 /* FileUploadService.swift */,
 				48BA320E23151930009B2EA6 /* SignInService.swift */,
 				48792E712316138500223DF8 /* SignOutService.swift */,
+				485BA39B2313CCF900A43130 /* SignUpService.swift */,
 			);
 			name = Services;
 			path = lib/core/src/Services;
@@ -358,8 +364,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48A22B022313887C0006F4AB /* Build configuration list for PBXNativeTarget "Peekr" */;
 			buildPhases = (
-				48F638BC2315123600AA8775 /* Lint */,
 				AB5E1D2FC2F1BCFD13C12764 /* [CP] Check Pods Manifest.lock */,
+				48F638BC2315123600AA8775 /* Lint */,
 				48A22AEC2313887B0006F4AB /* Sources */,
 				48A22AED2313887B0006F4AB /* Frameworks */,
 				48A22AEE2313887B0006F4AB /* Resources */,
@@ -512,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4876B88B23237FC600512784 /* VideoView.swift in Sources */,
+				48B06A17232C9AFB00EF7E90 /* FileUploadService.swift in Sources */,
 				48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */,
 				4876B87A2323473200512784 /* Colors.swift in Sources */,
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
@@ -539,6 +546,7 @@
 				48DFA806231F9E4C0020BE83 /* HomeViewController.swift in Sources */,
 				48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */,
 				4876B88923237C2400512784 /* GalleryCollectionCell.swift in Sources */,
+				48A8FC31233DE7F4009D55BB /* ImageFile.swift in Sources */,
 				48055B26231656EA00562F5B /* UIStrings.swift in Sources */,
 				481DDB79231D02AD00B36540 /* OnboardingBuilder.swift in Sources */,
 				48156D55231E485A00AA4B06 /* BaseFlow.swift in Sources */,
