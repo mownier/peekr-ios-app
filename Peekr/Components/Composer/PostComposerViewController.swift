@@ -53,14 +53,27 @@ class PostComposerViewController: UIViewController {
                 return
             }
             
-            let videoURL = outputURLOfCroppedVideo()
-            cropVideo(with: sourceAsset, outputURL: videoURL, end: duration) { isOkay in
-                guard isOkay else {
-                    return
-                }
+            let thumbnailURL = saveImageToCacheDirectory(frameGrab(for: sourceAsset, startTime: duration / 2.0))
+            uploadImage(with: thumbnailURL, track: { progress in
+                print("uploading image with progress:", String(describing: progress))
+            
+            }).then({ imageFile -> Promise<URL> in
+                print("imageFile:", imageFile)
+                print("cropping video...")
+                let videoURL = outputURLOfCroppedVideo()
+                return cropVideo(with: sourceAsset, outputURL: videoURL, end: duration)
+            
+            }).then({ videoURL -> Promise<VideoFile> in
+                return uploadVideo(with: videoURL, track: { progress in
+                    print("uploading video with progress:", String(describing: progress))
+                })
                 
-                let thumbnailURL = saveImageToCacheDirectory(frameGrab(for: sourceAsset, startTime: duration / 2.0))
-            }
+            }).then({ videoFile -> Void in
+                print("videoFile:", videoFile)
+                
+            }).catch({ error -> Void in
+                print(error)
+            })
         }
     }
     
@@ -99,7 +112,7 @@ private func saveImage(_ image: UIImage?, to directory: URL?, with name: String 
     let fileURL = directory!.appendingPathComponent(name)
     
     if fileManager.createFile(
-        atPath: fileURL.absoluteString,
+        atPath: fileURL.path,
         contents: UIImage.jpegData(image!)(compressionQuality: 0.9),
         attributes: nil) {
         return fileURL
@@ -114,32 +127,35 @@ private func saveImageToCacheDirectory(_ image: UIImage?) -> URL? {
     return saveImage(image, to: cacheDirectory)
 }
 
-private func cropVideo(with asset: AVAsset?, outputURL: URL?, start: Double = 0.0, end: Double = durationLimit, handler: @escaping (Bool) -> Void) {
-    guard asset != nil, outputURL != nil,
-        let exportSession = AVAssetExportSession(
-            asset: asset!,
-            presetName: AVAssetExportPresetHighestQuality) else {
-                return handler(false)
-    }
-    
-    exportSession.outputURL = outputURL
-    exportSession.outputFileType = AVFileType.mp4
-    
-    let startTime = CMTime(seconds: start, preferredTimescale: 1000)
-    let endTime = CMTime(seconds: end, preferredTimescale: 1000)
-    let timeRange = CMTimeRange(start: startTime, end: endTime)
-    
-    exportSession.timeRange = timeRange
-    exportSession.exportAsynchronously{
-        switch exportSession.status {
-        case .completed:
-            handler(true)
-            
-        case .failed, .cancelled:
-            handler(false)
-            
-        default:
-            break
+private func cropVideo(with asset: AVAsset?, outputURL: URL?, start: Double = 0.0, end: Double = durationLimit) -> Promise<URL> {
+    return Promise(queue: uploadQueue) { resolve, reject in
+        guard asset != nil, let outputURL = outputURL,
+            let exportSession = AVAssetExportSession(
+                asset: asset!,
+                presetName: AVAssetExportPresetHighestQuality) else {
+                    reject(coreError(message: "Can not create an export session"))
+                    return
+        }
+        
+        exportSession.outputURL = outputURL
+        exportSession.outputFileType = AVFileType.mp4
+        
+        let startTime = CMTime(seconds: start, preferredTimescale: 1000)
+        let endTime = CMTime(seconds: end, preferredTimescale: 1000)
+        let timeRange = CMTimeRange(start: startTime, end: endTime)
+        
+        exportSession.timeRange = timeRange
+        exportSession.exportAsynchronously{
+            switch exportSession.status {
+            case .completed:
+                resolve(outputURL)
+                
+            case .failed, .cancelled:
+                reject(coreError(message: "Exporting failed or cancelled"))
+                
+            default:
+                break
+            }
         }
     }
 }
@@ -163,4 +179,35 @@ private func outputURLOfCroppedVideo(with name: String = "\(Date().timeIntervalS
     return directory!.appendingPathComponent(name)
 }
 
+private func uploadImage(with url: URL?, track: @escaping (Progress?) -> Void) -> Promise<ImageFile> {
+    return Promise(queue: uploadQueue) { resolve, reject in
+        uploadJPEGImage(with: url, track: track, completion: { result in
+            switch result {
+            case let .notOkay(error):
+                reject(error)
+            
+            case let .okay(file):
+                resolve(file)
+            }
+        })
+    }
+}
+
+private func uploadVideo(with url: URL?, track: @escaping (Progress?) -> Void) -> Promise<VideoFile> {
+    return Promise(queue: uploadQueue) { resolve, reject in
+        uploadMP4Video(with: url, track: track, completion: { result in
+            switch result {
+            case let .notOkay(error):
+                reject(error)
+                
+            case let .okay(file):
+                resolve(file)
+            }
+        })
+    }
+}
+
 private let durationLimit: Double = 20 // 20 seconds
+private var uploadQueue: DispatchQueue = {
+    return DispatchQueue(label: "com.nir.Peekr.uploadQueue")
+}()
