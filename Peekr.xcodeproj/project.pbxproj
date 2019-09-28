@@ -27,6 +27,7 @@
 		481DDB79231D02AD00B36540 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481DDB78231D02AD00B36540 /* OnboardingBuilder.swift */; };
 		4835C3292320F959007A66A0 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4835C3282320F959007A66A0 /* HomeBuilder.swift */; };
 		485A018B233F0342002C4C12 /* VideoFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A018A233F0342002C4C12 /* VideoFile.swift */; };
+		485A018E233F0857002C4C12 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A018D233F0857002C4C12 /* Promise.swift */; };
 		485BA39C2313CCF900A43130 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39B2313CCF900A43130 /* SignUpService.swift */; };
 		485BA39E2313CD0700A43130 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39D2313CD0700A43130 /* Result.swift */; };
 		485BA3A02313CD8A00A43130 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BA39F2313CD8A00A43130 /* Either.swift */; };
@@ -90,6 +91,7 @@
 		481DDB78231D02AD00B36540 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		4835C3282320F959007A66A0 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		485A018A233F0342002C4C12 /* VideoFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFile.swift; sourceTree = "<group>"; };
+		485A018D233F0857002C4C12 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		485BA39B2313CCF900A43130 /* SignUpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		485BA39D2313CD0700A43130 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		485BA39F2313CD8A00A43130 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				48DFA802231F9DEA0020BE83 /* Home */,
 				481DDB71231CFD6800B36540 /* Onboarding */,
 				48B0733223223965008E6500 /* Profile */,
+				485A018C233F081C002C4C12 /* Shared */,
 				48055B1D2316530700562F5B /* UI */,
 			);
 			path = Components;
@@ -237,6 +240,14 @@
 				481DDB78231D02AD00B36540 /* OnboardingBuilder.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		485A018C233F081C002C4C12 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				485A018D233F0857002C4C12 /* Promise.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		485BA3922313C93500A43130 /* Core */ = {
@@ -543,6 +554,7 @@
 				48B0732B23220C5D008E6500 /* HomeFlow.swift in Sources */,
 				48B0733623223990008E6500 /* MyProfileViewController.swift in Sources */,
 				4876B8832323596C00512784 /* ComposerStrings.swift in Sources */,
+				485A018E233F0857002C4C12 /* Promise.swift in Sources */,
 				48B0733823223D15008E6500 /* ProfileStrings.swift in Sources */,
 				48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */,
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
