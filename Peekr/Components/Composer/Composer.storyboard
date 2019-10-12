@@ -259,6 +259,56 @@
             </objects>
             <point key="canvasLocation" x="1204" y="14"/>
         </scene>
+        <!--Post Composer Update Screen-->
+        <scene sceneID="GlB-9q-Jfq">
+            <objects>
+                <viewController storyboardIdentifier="PostComposerUpdateScreen" id="8vS-Pa-Fzb" customClass="PostComposerUpdateScreen" customModule="Peekr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gsO-hJ-pyF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jIL-ka-4r0" userLabel="Thumbnail Image View">
+                                <rect key="frame" x="16" y="416" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.64313725489999995" green="0.66274509800000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="BTg-LD-K2v"/>
+                                    <constraint firstAttribute="height" constant="64" id="o1G-2f-Zxy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="915-Im-IJo">
+                                <rect key="frame" x="96" y="416" width="302" height="64"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="A94-kt-igD">
+                                <rect key="frame" x="0.0" y="488" width="414" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UfU-By-Bgx" firstAttribute="trailing" secondItem="915-Im-IJo" secondAttribute="trailing" constant="16" id="Cz5-CX-lWX"/>
+                            <constraint firstAttribute="trailing" secondItem="A94-kt-igD" secondAttribute="trailing" id="GIs-4o-M6k"/>
+                            <constraint firstItem="A94-kt-igD" firstAttribute="top" secondItem="jIL-ka-4r0" secondAttribute="bottom" constant="8" id="Gf5-Zn-Hdo"/>
+                            <constraint firstItem="915-Im-IJo" firstAttribute="leading" secondItem="jIL-ka-4r0" secondAttribute="trailing" constant="16" id="TDt-TL-GYY"/>
+                            <constraint firstItem="915-Im-IJo" firstAttribute="bottom" secondItem="jIL-ka-4r0" secondAttribute="bottom" id="d6L-Ud-gkz"/>
+                            <constraint firstItem="jIL-ka-4r0" firstAttribute="centerY" secondItem="gsO-hJ-pyF" secondAttribute="centerY" id="dyW-TD-5eS"/>
+                            <constraint firstItem="915-Im-IJo" firstAttribute="top" secondItem="jIL-ka-4r0" secondAttribute="top" id="faV-sR-Jr2"/>
+                            <constraint firstItem="A94-kt-igD" firstAttribute="leading" secondItem="gsO-hJ-pyF" secondAttribute="leading" id="g13-2G-gfz"/>
+                            <constraint firstItem="jIL-ka-4r0" firstAttribute="leading" secondItem="UfU-By-Bgx" secondAttribute="leading" constant="16" id="rMl-Lx-xcb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UfU-By-Bgx"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="915-Im-IJo" id="LT9-zZ-Mfr"/>
+                        <outlet property="progressView" destination="A94-kt-igD" id="hGs-Xu-SBU"/>
+                        <outlet property="thumbnailImageView" destination="jIL-ka-4r0" id="fV1-Kz-vhn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sM8-kV-Zbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1932" y="13"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon-checkmark-circle" width="15" height="15"/>
