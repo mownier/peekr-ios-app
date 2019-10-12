@@ -20,6 +20,9 @@ class HomeViewController: UIViewController {
     private var tabBarData: [Pair<UIButton, UIViewController>] = []
     private var currentPageIndex: Int = -1
     
+    var postComposerUpdateScreenObserver: NSObjectProtocol? = nil
+    var resultOfSharingPostObserver: NSObjectProtocol? = nil
+    
     override func loadView() {
         super.loadView()
         
@@ -39,6 +42,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        postComposerUpdateScreenObserver = registerBroadcastObserverWith(
+            name: PostComposerViewController.shareNotification,
+            action: shareNotificationAction
+        )
+        
+        resultOfSharingPostObserver = registerBroadcastObserverWith(
+            name: PostComposerUpdateScreen.resultOfSharingPostNotification,
+            action: resultOfSharingPostAction
+        )
         
         composerButton.layer.cornerRadius = composerButton.frame.width / 2
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
@@ -119,6 +131,32 @@ class HomeViewController: UIViewController {
         currentPageIndex = index
         
         return true
+    }
+    
+    func shareNotificationAction(_ triple: Triple<PostComposerViewController, String, Pair<URL, URL>>) -> Bool {
+        let screen = createPostComposerUpdateScreen()
+            .setMessageText(triple.second)
+            .setImageURL(triple.third.first)
+            .setVideoURL(triple.third.second)
+        
+        addChild(screen)
+        screen.didMove(toParent: self)
+        view.addSubview(screen.view)
+        
+        screen.view.frame = view.bounds
+        screen.view.frame.origin.y = tabBarView.frame.maxY
+        screen.view.frame.size.height = 84
+        
+        return true
+    }
+    
+    func resultOfSharingPostAction(_ pair: Pair<PostComposerUpdateScreen, Result<Post>>) {
+        guard let screen = children.first(where: { $0 is PostComposerUpdateScreen}) as? PostComposerUpdateScreen else {
+            return
+        }
+        screen.view.removeFromSuperview()
+        screen.removeFromParent()
+        screen.didMove(toParent: nil)
     }
     
     struct TabBarItem {
