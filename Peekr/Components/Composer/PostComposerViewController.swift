@@ -35,6 +35,7 @@ class PostComposerViewController: UIViewController {
     }
     
     @IBAction func onTapShareButton() {
+        let message = messageTextView.text ?? ""
         let manager = PHCachingImageManager()
         manager.requestAVAsset(forVideo: asset, options: nil) { videoAsset, _, _ in
             guard let sourceAsset = videoAsset as? AVURLAsset else {
@@ -53,27 +54,24 @@ class PostComposerViewController: UIViewController {
                 return
             }
             
-            let thumbnailURL = saveImageToCacheDirectory(frameGrab(for: sourceAsset, startTime: duration / 2.0))
-            uploadImage(with: thumbnailURL, track: { progress in
-                print("uploading image with progress:", String(describing: progress))
-            
-            }).then({ imageFile -> Promise<URL> in
-                print("imageFile:", imageFile)
-                print("cropping video...")
-                let videoURL = outputURLOfCroppedVideo()
-                return cropVideo(with: sourceAsset, outputURL: videoURL, end: duration)
-            
-            }).then({ videoURL -> Promise<VideoFile> in
-                return uploadVideo(with: videoURL, track: { progress in
-                    print("uploading video with progress:", String(describing: progress))
+            cropVideo(with: sourceAsset, outputURL: outputURLOfCroppedVideo(), end: duration)
+                .then({ urlOfVideo in
+                    let urlOfThumbnail = saveImageToCacheDirectory(
+                        frameGrab(for: sourceAsset, startTime: duration / 2.0)
+                    )
+                    sharePost(
+                        with: message,
+                        imageURL: urlOfThumbnail,
+                        videoURL: urlOfVideo,
+                        track: { progress in
+                            print("sharing post with progress:", progress)
+                    }, completion: { result in
+                        
+                    })
                 })
-                
-            }).then({ videoFile -> Void in
-                print("videoFile:", videoFile)
-                
-            }).catch({ error -> Void in
-                print(error)
-            })
+                .catch({ error in
+                    print("sharing post with error:", error)
+                })
         }
     }
     
@@ -127,7 +125,12 @@ private func saveImageToCacheDirectory(_ image: UIImage?) -> URL? {
     return saveImage(image, to: cacheDirectory)
 }
 
-private func cropVideo(with asset: AVAsset?, outputURL: URL?, start: Double = 0.0, end: Double = durationLimit) -> Promise<URL> {
+private func cropVideo(
+    with asset: AVAsset?,
+    outputURL: URL?,
+    start: Double = 0.0,
+    end: Double = durationLimit
+) -> Promise<URL> {
     return Promise(queue: uploadQueue) { resolve, reject in
         guard asset != nil, let outputURL = outputURL,
             let exportSession = AVAssetExportSession(
@@ -177,34 +180,6 @@ private func outputURLOfCroppedVideo(with name: String = "\(Date().timeIntervalS
     }
     
     return directory!.appendingPathComponent(name)
-}
-
-private func uploadImage(with url: URL?, track: @escaping (Progress?) -> Void) -> Promise<ImageFile> {
-    return Promise(queue: uploadQueue) { resolve, reject in
-        uploadJPEGImage(with: url, track: track, completion: { result in
-            switch result {
-            case let .notOkay(error):
-                reject(error)
-            
-            case let .okay(file):
-                resolve(file)
-            }
-        })
-    }
-}
-
-private func uploadVideo(with url: URL?, track: @escaping (Progress?) -> Void) -> Promise<VideoFile> {
-    return Promise(queue: uploadQueue) { resolve, reject in
-        uploadMP4Video(with: url, track: track, completion: { result in
-            switch result {
-            case let .notOkay(error):
-                reject(error)
-                
-            case let .okay(file):
-                resolve(file)
-            }
-        })
-    }
 }
 
 private let durationLimit: Double = 20 // 20 seconds
