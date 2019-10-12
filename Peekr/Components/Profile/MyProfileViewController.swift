@@ -19,6 +19,7 @@ class MyProfileViewController: UIViewController {
 
         signOutButton.setTitle(ProfileStrings.signOut, for: .normal)
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
+        avatarImageView.backgroundColor = Colors.gray1
     }
     
     @IBAction func onTapCloseButton() {
@@ -26,8 +27,9 @@ class MyProfileViewController: UIViewController {
     }
     
     @IBAction func onTapSignOutButton() {
-        
+        broadcastWith(name: MyProfileViewController.signOutConfirmationNotification, info: self)
     }
     
     static let dismissNotification = Notification.Name(rawValue: ProfileStrings.dismissNotificationRawName)
+    static let signOutConfirmationNotification = Notification.Name(rawValue: ProfileStrings.signOutConfirmationNotificationRawName)
 }

@@ -70,6 +70,19 @@
                                     <segue destination="Jzu-df-tYp" kind="embed" id="W1C-Du-u1t"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqZ-1E-QHV" userLabel="Composer Button">
+                                <rect key="frame" x="334" y="782" width="56" height="56"/>
+                                <color key="backgroundColor" red="0.0" green="0.65943402949999996" blue="0.6298921851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="DCX-VW-s5o"/>
+                                    <constraint firstAttribute="height" constant="56" id="gxO-Zh-CnW"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="icon-bubble"/>
+                                <connections>
+                                    <action selector="onTapComposerButton" destination="7Fc-Y5-fJD" eventType="touchUpInside" id="cjP-XQ-4w5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -79,15 +92,18 @@
                             <constraint firstItem="wRY-CZ-jcl" firstAttribute="top" secondItem="e05-xc-MXt" secondAttribute="top" id="Ci4-fU-tga"/>
                             <constraint firstItem="0sA-cf-OOE" firstAttribute="top" secondItem="wRY-CZ-jcl" secondAttribute="bottom" id="Jmf-qc-GJR"/>
                             <constraint firstItem="e05-xc-MXt" firstAttribute="trailing" secondItem="I86-9J-HYW" secondAttribute="trailing" id="MlC-49-Ij4"/>
+                            <constraint firstItem="e05-xc-MXt" firstAttribute="trailing" secondItem="ZqZ-1E-QHV" secondAttribute="trailing" constant="24" id="PHv-m5-lB0"/>
                             <constraint firstItem="0sA-cf-OOE" firstAttribute="trailing" secondItem="e05-xc-MXt" secondAttribute="trailing" id="SKi-TG-pW0"/>
                             <constraint firstItem="0sA-cf-OOE" firstAttribute="leading" secondItem="e05-xc-MXt" secondAttribute="leading" id="Zx8-BR-Fs1"/>
                             <constraint firstItem="wRY-CZ-jcl" firstAttribute="trailing" secondItem="e05-xc-MXt" secondAttribute="trailing" id="aw0-h2-kiD"/>
                             <constraint firstItem="e05-xc-MXt" firstAttribute="bottom" secondItem="I86-9J-HYW" secondAttribute="bottom" id="c1m-3P-ATa"/>
+                            <constraint firstItem="e05-xc-MXt" firstAttribute="bottom" secondItem="ZqZ-1E-QHV" secondAttribute="bottom" constant="24" id="xYg-7p-8mq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e05-xc-MXt"/>
                     </view>
                     <connections>
                         <outlet property="avatarImageView" destination="ehr-1L-MI4" id="wMf-1y-f8A"/>
+                        <outlet property="composerButton" destination="ZqZ-1E-QHV" id="lCw-9C-qOa"/>
                         <outlet property="tabBarView" destination="0sA-cf-OOE" id="Adg-OT-FlO"/>
                         <outlet property="titleLabel" destination="6Iz-xP-fTw" id="he9-IE-bfz"/>
                     </connections>
@@ -105,4 +121,7 @@
             <point key="canvasLocation" x="1014" y="268"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-bubble" width="15" height="15"/>
+    </resources>
 </document>

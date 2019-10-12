@@ -9,4 +9,5 @@
 enum UIStrings {
     
     static let error = "Error".localized()
+    static let cancel = "Cancel".localized()
 }

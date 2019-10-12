@@ -13,11 +13,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tabBarView: UIView!
+    @IBOutlet weak var composerButton: UIButton!
     
     var tabBarItems: [TabBarItem] = []
     
     private var tabBarData: [Pair<UIButton, UIViewController>] = []
     private var currentPageIndex: Int = -1
+    
+    var postComposerUpdateScreenObserver: NSObjectProtocol? = nil
+    var resultOfSharingPostObserver: NSObjectProtocol? = nil
     
     override func loadView() {
         super.loadView()
@@ -38,9 +42,20 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+        postComposerUpdateScreenObserver = registerBroadcastObserverWith(
+            name: PostComposerViewController.shareNotification,
+            action: shareNotificationAction
+        )
         
-        pagingController?.view.backgroundColor = UIColor(named: "Gray2")
+        resultOfSharingPostObserver = registerBroadcastObserverWith(
+            name: PostComposerUpdateScreen.resultOfSharingPostNotification,
+            action: resultOfSharingPostAction
+        )
+        
+        composerButton.layer.cornerRadius = composerButton.frame.width / 2
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+        avatarImageView.backgroundColor = Colors.gray1
+        pagingController?.view.backgroundColor = Colors.gray2
         pagingController?.dataSource = self
         pagingController?.delegate = self
         performButton(tabBarData.first?.first)
@@ -62,6 +77,10 @@ class HomeViewController: UIViewController {
             let tabBarButtonOrigin = CGPoint(x: CGFloat(item.offset) * tabBarButtonSize.width, y: 0)
             item.element.first.frame = CGRect(origin: tabBarButtonOrigin, size: tabBarButtonSize)
         }
+    }
+    
+    @IBAction func onTapComposerButton() {
+        broadcastWith(name: HomeViewController.showComposeScreenNotification, info: self)
     }
     
     private var pagingController: HomePagingViewController? {
@@ -114,6 +133,32 @@ class HomeViewController: UIViewController {
         return true
     }
     
+    func shareNotificationAction(_ triple: Triple<PostComposerViewController, String, Pair<URL, URL>>) -> Bool {
+        let screen = createPostComposerUpdateScreen()
+            .setMessageText(triple.second)
+            .setImageURL(triple.third.first)
+            .setVideoURL(triple.third.second)
+        
+        addChild(screen)
+        screen.didMove(toParent: self)
+        view.addSubview(screen.view)
+        
+        screen.view.frame = view.bounds
+        screen.view.frame.origin.y = tabBarView.frame.maxY
+        screen.view.frame.size.height = 84
+        
+        return true
+    }
+    
+    func resultOfSharingPostAction(_ pair: Pair<PostComposerUpdateScreen, Result<Post>>) {
+        guard let screen = children.first(where: { $0 is PostComposerUpdateScreen}) as? PostComposerUpdateScreen else {
+            return
+        }
+        screen.view.removeFromSuperview()
+        screen.removeFromParent()
+        screen.didMove(toParent: nil)
+    }
+    
     struct TabBarItem {
         
         let selectedImageName: String
@@ -122,6 +167,7 @@ class HomeViewController: UIViewController {
     }
     
     static let showMyProfileScreenNotification = Notification.Name(rawValue: HomeStrings.showMyProfileScreenNotificationRawName)
+    static let showComposeScreenNotification = Notification.Name(rawValue: HomeStrings.showComposeScreenNotificationRawName)
 }
 
 extension HomeViewController: UIPageViewControllerDataSource {

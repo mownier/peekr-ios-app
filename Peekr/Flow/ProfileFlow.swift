@@ -11,6 +11,7 @@ import UIKit
 class ProfileFlow: BaseFlowDefault {
     
     private var dismissMyProfileScreenObserver: NSObjectProtocol?
+    private var signOutConfirmationObserver: NSObjectProtocol?
     
     override func registerObservers() -> Bool {
         dismissMyProfileScreenObserver = registerBroadcastObserverWith(
@@ -18,27 +19,50 @@ class ProfileFlow: BaseFlowDefault {
             action: dismissMyProfileScreenAction
         )
         
+        signOutConfirmationObserver = registerBroadcastObserverWith(
+            name: MyProfileViewController.signOutConfirmationNotification,
+            action: signOutConfirmationAction
+        )
+        
         return super.registerObservers()
     }
     
     override func unregisterObservers() -> Bool {
         let isOkay = unregisterBroadcastObserversWith(pairs:
-            pairWith(first: MyProfileViewController.dismissNotification, second: dismissMyProfileScreenObserver)
+            pairWith(first: MyProfileViewController.dismissNotification, second: dismissMyProfileScreenObserver),
+            pairWith(first: MyProfileViewController.signOutConfirmationNotification, second: signOutConfirmationObserver)
         )
         
         dismissMyProfileScreenObserver = nil
+        signOutConfirmationObserver = nil
         
         return isOkay
     }
     
     override func allObservers() -> [NSObjectProtocol?] {
         return [
-            dismissMyProfileScreenObserver
+            dismissMyProfileScreenObserver,
+            signOutConfirmationObserver,
         ]
     }
     
     private func dismissMyProfileScreenAction(screen: MyProfileViewController) -> Bool {
         return hideMyProfileScreen(screen)
+    }
+    
+    private func signOutConfirmationAction(screen: MyProfileViewController) -> Bool {
+        showConfirmationAlertFrom(
+            parent: screen,
+            message: ProfileStrings.areYouSure,
+            title: ProfileStrings.signOut,
+            positiveAction: {
+                signOut { _ in
+                    hideMyProfileScreen(screen)
+                    makeLandingScreenAsRootOf(window: self.window)
+                }
+            }
+        )
+        return true
     }
 }
 

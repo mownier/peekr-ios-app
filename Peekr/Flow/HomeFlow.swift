@@ -11,6 +11,7 @@ import UIKit
 class HomeFlow: BaseFlowDefault {
     
     private var showMyProfileScreenObserver: NSObjectProtocol?
+    private var showComposeScreenObserver: NSObjectProtocol?
     
     override func registerObservers() -> Bool {
         showMyProfileScreenObserver = registerBroadcastObserverWith(
@@ -18,27 +19,39 @@ class HomeFlow: BaseFlowDefault {
             action: showMyProfileScreenAction
         )
         
+        showComposeScreenObserver = registerBroadcastObserverWith(
+            name: HomeViewController.showComposeScreenNotification,
+            action: showComposeScreenAction
+        )
+        
         return super.registerObservers()
     }
     
     override func unregisterObservers() -> Bool {
         let isOkay = unregisterBroadcastObserversWith(pairs:
-            pairWith(first: HomeViewController.showMyProfileScreenNotification, second: showMyProfileScreenObserver)
+            pairWith(first: HomeViewController.showMyProfileScreenNotification, second: showMyProfileScreenObserver),
+            pairWith(first: HomeViewController.showComposeScreenNotification, second: showComposeScreenObserver)
         )
         
         showMyProfileScreenObserver = nil
+        showComposeScreenObserver = nil
         
         return isOkay
     }
     
     override func allObservers() -> [NSObjectProtocol?] {
         return [
-            showMyProfileScreenObserver
+            showMyProfileScreenObserver,
+            showComposeScreenObserver,
         ]
     }
     
     private func showMyProfileScreenAction(parent: UIViewController) -> Bool {
         return showMyProfileScreenFrom(parent: parent) != nil
+    }
+    
+    private func showComposeScreenAction(parent: UIViewController) -> Bool {
+        return showGallertyScreenFrom(parent: parent) != nil
     }
 }
 
