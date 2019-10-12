@@ -54,29 +54,39 @@ class PostComposerViewController: UIViewController {
                 return
             }
             
+            
             cropVideo(with: sourceAsset, outputURL: outputURLOfCroppedVideo(), end: duration)
-                .then({ urlOfVideo in
-                    let urlOfThumbnail = saveImageToCacheDirectory(
-                        frameGrab(for: sourceAsset, startTime: duration / 2.0)
-                    )
-                    sharePost(
-                        with: message,
-                        imageURL: urlOfThumbnail,
-                        videoURL: urlOfVideo,
-                        track: { progress in
-                            print("sharing post with progress:", progress)
-                    }, completion: { result in
-                        
-                    })
-                })
-                .catch({ error in
-                    print("sharing post with error:", error)
+                .then({ urlOfVideo -> Promise<Pair<URL, URL>> in
+                    return Promise<Pair<URL, URL>> { resolve, reject in
+                        guard let urlOfThumbnail = saveImageToCacheDirectory(frameGrab(for: sourceAsset, startTime: duration / 2.0)) else {
+                            reject(coreError(message: "Can not save thumbnail image to cache directory"))
+                            return
+                        }
+                        resolve(pairWith(first: urlOfThumbnail, second: urlOfVideo))
+                    }
+                    
+                }).then({ pair in
+                    DispatchQueue.main.async {
+                        broadcastWith(
+                            name: PostComposerViewController.shareNotification,
+                            info: tripleOf(self, message, pair)
+                        )
+                    }
+                    
+                }).catch({ error in
+                    DispatchQueue.main.async {
+                        broadcastWith(
+                            name: PostComposerViewController.errorWhileComposingNotification,
+                            info: pairWith(first: self, second: error)
+                        )
+                    }
                 })
         }
     }
     
     static let shareNotification = Notification.Name(rawValue: ComposerStrings.shareNotificationRawName)
     static let cancelComposingNotification = Notification.Name(rawValue: ComposerStrings.cancelComposingNotificationRawName)
+    static let errorWhileComposingNotification = Notification.Name(rawValue: ComposerStrings.errorWhileComposingNotificationRawName)
 }
 
 private func frameGrab(for asset: AVAsset, startTime: Float64 = 3, location: Int32 = 1) -> UIImage? {
