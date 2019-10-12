@@ -19,6 +19,7 @@
 		48055B26231656EA00562F5B /* UIStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B25231656EA00562F5B /* UIStrings.swift */; };
 		480FA84B235170A200A61E1F /* PostSharerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FA84A235170A200A61E1F /* PostSharerService.swift */; };
 		480FA84D235170EF00A61E1F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FA84C235170EF00A61E1F /* Post.swift */; };
+		480FA84F23519A7C00A61E1F /* PostComposerUpdateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FA84E23519A7C00A61E1F /* PostComposerUpdateScreen.swift */; };
 		48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48156D52231E445A00AA4B06 /* AuthFlow.swift */; };
 		48156D55231E485A00AA4B06 /* BaseFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48156D54231E485A00AA4B06 /* BaseFlow.swift */; };
 		48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48156D56231E48AA00AA4B06 /* OnboardingFlow.swift */; };
@@ -85,6 +86,7 @@
 		48055B25231656EA00562F5B /* UIStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStrings.swift; sourceTree = "<group>"; };
 		480FA84A235170A200A61E1F /* PostSharerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSharerService.swift; sourceTree = "<group>"; };
 		480FA84C235170EF00A61E1F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		480FA84E23519A7C00A61E1F /* PostComposerUpdateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComposerUpdateScreen.swift; sourceTree = "<group>"; };
 		48156D52231E445A00AA4B06 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
 		48156D54231E485A00AA4B06 /* BaseFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlow.swift; sourceTree = "<group>"; };
 		48156D56231E48AA00AA4B06 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				4876B8822323596C00512784 /* ComposerStrings.swift */,
 				4876B88823237C2400512784 /* GalleryCollectionCell.swift */,
 				4876B8802323542F00512784 /* GalleryViewController.swift */,
+				480FA84E23519A7C00A61E1F /* PostComposerUpdateScreen.swift */,
 				4876B87C232352A200512784 /* PostComposerViewController.swift */,
 			);
 			path = Composer;
@@ -581,6 +584,7 @@
 				48792E722316138500223DF8 /* SignOutService.swift in Sources */,
 				485BA3A42313CE1300A43130 /* Triple.swift in Sources */,
 				4835C3292320F959007A66A0 /* HomeBuilder.swift in Sources */,
+				480FA84F23519A7C00A61E1F /* PostComposerUpdateScreen.swift in Sources */,
 				48055B11231622E000562F5B /* AppFlow.swift in Sources */,
 				48055B1823164DC000562F5B /* CoreViewController.swift in Sources */,
 				485BA3A22313CDCE00A43130 /* Pair.swift in Sources */,
