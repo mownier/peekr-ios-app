@@ -14,6 +14,7 @@ class ComposerFlow: BaseFlowDefault {
     private var dismissGalleryScreenObserver: NSObjectProtocol?
     private var doneGalleryScreenObserver: NSObjectProtocol?
     private var cancelComposingObserver: NSObjectProtocol?
+    private var shareNotificationObserver: NSObjectProtocol?
     
     override func registerObservers() -> Bool {
         dismissGalleryScreenObserver = registerBroadcastObserverWith(
@@ -31,6 +32,11 @@ class ComposerFlow: BaseFlowDefault {
             action: cancelComposingAction
         )
         
+        shareNotificationObserver = registerBroadcastObserverWith(
+            name: PostComposerViewController.shareNotification,
+            action: shareNotificationAction
+        )
+        
         return super.registerObservers()
     }
     
@@ -38,12 +44,14 @@ class ComposerFlow: BaseFlowDefault {
         let isOkay = unregisterBroadcastObserversWith(pairs:
             pairWith(first: GalleryViewController.dismissNotification, second: dismissGalleryScreenObserver),
             pairWith(first: GalleryViewController.doneNotification, second: doneGalleryScreenObserver),
-            pairWith(first: PostComposerViewController.cancelComposingNotification, second: cancelComposingObserver)
+            pairWith(first: PostComposerViewController.cancelComposingNotification, second: cancelComposingObserver),
+            pairWith(first: PostComposerViewController.shareNotification, second: shareNotificationObserver)
         )
         
         dismissGalleryScreenObserver = nil
         doneGalleryScreenObserver = nil
         cancelComposingObserver = nil
+        shareNotificationObserver = nil
         
         return isOkay
     }
@@ -53,6 +61,7 @@ class ComposerFlow: BaseFlowDefault {
             dismissGalleryScreenObserver,
             doneGalleryScreenObserver,
             cancelComposingObserver,
+            shareNotificationObserver,
         ]
     }
     
@@ -66,6 +75,16 @@ class ComposerFlow: BaseFlowDefault {
     
     private func cancelComposingAction(_ screen: PostComposerViewController) -> Bool {
         return hidePostComposerScreen(screen)
+    }
+    
+    private func shareNotificationAction(_ triple: Triple<PostComposerViewController, String, Pair<URL, URL>>) -> Bool {
+        if let parentScreen = triple.first.presentingViewController as? GalleryViewController {
+            hidePostComposerScreen(triple.first) {
+                hideGalleryScreen(parentScreen)
+            }
+            return false
+        }
+        return false
     }
 }
 
@@ -101,11 +120,11 @@ func showPostComposerScreen(with pair: Pair<GalleryViewController, PHAsset>?) ->
 }
 
 @discardableResult
-func hidePostComposerScreen(_ screen: PostComposerViewController) -> Bool {
+func hidePostComposerScreen(_ screen: PostComposerViewController, _ completion: (() -> Void)? = nil) -> Bool {
     let transition = TranslationTransitioning()
     transition.presentationDirection = .left
     transition.dismissalDirection = .right
     screen.transitioningDelegate = transition
-    screen.dismiss(animated: true, completion: nil)
+    screen.dismiss(animated: true, completion: completion)
     return true
 }
