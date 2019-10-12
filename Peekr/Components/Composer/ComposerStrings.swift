@@ -12,6 +12,8 @@ enum ComposerStrings {
     static let shareNotificationRawName = "PostComposerViewController.shareNotification"
     static let doneNotificationRawName = "GalleryViewController.doneNotification"
     static let dismissNotificationRawName = "GalleryViewController.dismissNotification"
+    static let resultOfSharingPostRawName = "PostComposerUpdateScreen.resultOfSharingPostRawName"
+    static let errorWhileComposingNotificationRawName = "PostComposerViewController.errorWhileComposingNotification"
     
     static let next = "Next".localized()
     static let gallery = "Gallery".localized()
