@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     
     var postComposerUpdateScreenObserver: NSObjectProtocol? = nil
     var resultOfSharingPostObserver: NSObjectProtocol? = nil
+    var signOutObserver: NSObjectProtocol? = nil
     
     override func loadView() {
         super.loadView()
@@ -50,6 +51,11 @@ class HomeViewController: UIViewController {
         resultOfSharingPostObserver = registerBroadcastObserverWith(
             name: PostComposerUpdateScreen.resultOfSharingPostNotification,
             action: resultOfSharingPostAction
+        )
+        
+        signOutObserver = registerBroadcastObserverWith(
+            name: MyProfileViewController.signOutConfirmationNotification,
+            action: signOutConfirmationAction
         )
         
         composerButton.layer.cornerRadius = composerButton.frame.width / 2
@@ -157,6 +163,15 @@ class HomeViewController: UIViewController {
         screen.view.removeFromSuperview()
         screen.removeFromParent()
         screen.didMove(toParent: nil)
+    }
+    
+    func signOutConfirmationAction(screen: MyProfileViewController) -> Bool {
+        unregisterBroadcastObserversWith(pairs:
+            pairWith(first: PostComposerViewController.shareNotification, second: postComposerUpdateScreenObserver),
+            pairWith(first: PostComposerUpdateScreen.resultOfSharingPostNotification, second: resultOfSharingPostObserver),
+            pairWith(first: MyProfileViewController.signOutConfirmationNotification, second: signOutObserver)
+        )
+        return true
     }
     
     struct TabBarItem {
