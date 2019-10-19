@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4801F73F235AA70F0002211D /* NewsFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4801F73E235AA70F0002211D /* NewsFeedService.swift */; };
+		4801F741235AB15B0002211D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4801F740235AB15B0002211D /* User.swift */; };
 		48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B06231617CC00562F5B /* SignUpViewController.swift */; };
 		48055B09231617D900562F5B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48055B08231617D900562F5B /* Auth.storyboard */; };
 		48055B0B23161B2600562F5B /* AuthStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B0A23161B2600562F5B /* AuthStrings.swift */; };
@@ -74,6 +76,8 @@
 /* Begin PBXFileReference section */
 		05B02E76514D27ADCE66EAA7 /* Pods_Peekr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peekr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3528431278CB2B94B8356D /* Pods-Peekr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peekr.debug.xcconfig"; path = "Target Support Files/Pods-Peekr/Pods-Peekr.debug.xcconfig"; sourceTree = "<group>"; };
+		4801F73E235AA70F0002211D /* NewsFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedService.swift; sourceTree = "<group>"; };
+		4801F740235AB15B0002211D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		48055B06231617CC00562F5B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		48055B08231617D900562F5B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		48055B0A23161B2600562F5B /* AuthStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStrings.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				485BA39D2313CD0700A43130 /* Result.swift */,
 				485BA3A32313CE1300A43130 /* Triple.swift */,
 				485A018A233F0342002C4C12 /* VideoFile.swift */,
+				4801F740235AB15B0002211D /* User.swift */,
 			);
 			name = Models;
 			path = lib/core/src/Models;
@@ -292,6 +297,7 @@
 				48BA320E23151930009B2EA6 /* SignInService.swift */,
 				48792E712316138500223DF8 /* SignOutService.swift */,
 				485BA39B2313CCF900A43130 /* SignUpService.swift */,
+				4801F73E235AA70F0002211D /* NewsFeedService.swift */,
 			);
 			name = Services;
 			path = lib/core/src/Services;
@@ -570,6 +576,8 @@
 				48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */,
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				48DFA806231F9E4C0020BE83 /* HomeViewController.swift in Sources */,
+				4801F741235AB15B0002211D /* User.swift in Sources */,
+				4801F73F235AA70F0002211D /* NewsFeedService.swift in Sources */,
 				48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */,
 				4876B88923237C2400512784 /* GalleryCollectionCell.swift in Sources */,
 				48A8FC31233DE7F4009D55BB /* ImageFile.swift in Sources */,
