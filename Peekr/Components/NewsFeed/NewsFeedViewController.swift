@@ -12,13 +12,16 @@ import Nuke
 public class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewCenterReferenceView: UIView!
     
     var data: Pair<Set<User>, [Post]> = pairWith(first: [], second: [])
+    var indexOfCurrentPlayingVideo: Int = 0
     
     public override func loadView() {
         super.loadView()
         
         tableView.register(UINib(nibName: "PostTableCell", bundle: nil), forCellReuseIdentifier: "PostTableCell")
+        tableView.tableFooterView = UIView()
     }
     
     public override func viewDidLoad() {
@@ -58,7 +61,47 @@ extension NewsFeedViewController: UITableViewDataSource {
         if let url = URL(string: post.thumbnail.downloadURLString) {
             Nuke.loadImage(with: url, into: cell.previewImageView)
         }
+        cell.videoView.isHidden = true
+        if indexOfCurrentPlayingVideo == indexPath.row,
+            let url = URL(string: post.video.downloadURLString) {
+            cell.videoView.onStart = { view in
+                guard cell.videoView == view else {
+                    return
+                }
+                view?.isHidden = false
+            }
+            cell.videoView.configure(url: url)
+            cell.videoView.play()
+            
+        } else {
+            cell.videoView.sanitize()
+        }
         return cell
+    }
+}
+
+extension NewsFeedViewController: UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as? PostTableCell
+        cell?.videoView.isHidden = true
+        cell?.videoView.sanitize()
+    }
+}
+
+extension NewsFeedViewController: UIScrollViewDelegate {
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let point = view.convert(tableViewCenterReferenceView.frame.origin, to: tableView)
+        guard let indexPathAtCenter = tableView.indexPathForRow(at: point),
+            indexOfCurrentPlayingVideo != indexPathAtCenter.row else {
+                return
+        }
+        let currentIndexPath = IndexPath(row: indexOfCurrentPlayingVideo, section: 0)
+        indexOfCurrentPlayingVideo = indexPathAtCenter.row
+        UIView.setAnimationsEnabled(false)
+        tableView.reloadRows(at: [currentIndexPath, indexPathAtCenter], with: .none)
+        UIView.setAnimationsEnabled(true)
     }
 }
 
