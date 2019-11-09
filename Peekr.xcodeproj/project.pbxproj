@@ -51,6 +51,10 @@
 		48792E722316138500223DF8 /* SignOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48792E712316138500223DF8 /* SignOutService.swift */; };
 		487D77B3232B784600DA51B2 /* TranslationTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */; };
 		4889014F2376585B004AD882 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889014E2376585B004AD882 /* UserService.swift */; };
+		4889015223766062004AD882 /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4889015123766062004AD882 /* NewsFeed.storyboard */; };
+		48890154237660BD004AD882 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48890153237660BD004AD882 /* NewsFeedViewController.swift */; };
+		48890157237661A5004AD882 /* PostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48890156237661A5004AD882 /* PostTableCell.swift */; };
+		48890159237661DA004AD882 /* PostTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48890158237661DA004AD882 /* PostTableCell.xib */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
@@ -121,6 +125,10 @@
 		48792E712316138500223DF8 /* SignOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutService.swift; sourceTree = "<group>"; };
 		487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTransitioning.swift; sourceTree = "<group>"; };
 		4889014E2376585B004AD882 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4889015123766062004AD882 /* NewsFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
+		48890153237660BD004AD882 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		48890156237661A5004AD882 /* PostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableCell.swift; sourceTree = "<group>"; };
+		48890158237661DA004AD882 /* PostTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableCell.xib; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A22AF52313887B0006F4AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +172,7 @@
 				48055B05231617A300562F5B /* Auth */,
 				4876B87B2323527700512784 /* Composer */,
 				48DFA802231F9DEA0020BE83 /* Home */,
+				488901502376604B004AD882 /* NewsFeed */,
 				481DDB71231CFD6800B36540 /* Onboarding */,
 				48B0733223223965008E6500 /* Profile */,
 				485A018C233F081C002C4C12 /* Shared */,
@@ -207,10 +216,11 @@
 			children = (
 				4876B8792323473200512784 /* Colors.swift */,
 				48055B1E2316531800562F5B /* SimpleAlert.swift */,
+				487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */,
 				48055B25231656EA00562F5B /* UIStrings.swift */,
 				4876B88A23237FC600512784 /* VideoView.swift */,
 				48B0732E232230FB008E6500 /* Colors.xcassets */,
-				487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */,
+				4889015523766174004AD882 /* Cells */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -318,6 +328,24 @@
 				4876B87C232352A200512784 /* PostComposerViewController.swift */,
 			);
 			path = Composer;
+			sourceTree = "<group>";
+		};
+		488901502376604B004AD882 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				4889015123766062004AD882 /* NewsFeed.storyboard */,
+				48890153237660BD004AD882 /* NewsFeedViewController.swift */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		4889015523766174004AD882 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48890156237661A5004AD882 /* PostTableCell.swift */,
+				48890158237661DA004AD882 /* PostTableCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		48A22AE72313887B0006F4AB = {
@@ -450,7 +478,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48890159237661DA004AD882 /* PostTableCell.xib in Resources */,
 				48DFA804231F9DFC0020BE83 /* Home.storyboard in Resources */,
+				4889015223766062004AD882 /* NewsFeed.storyboard in Resources */,
 				48055B09231617D900562F5B /* Auth.storyboard in Resources */,
 				4876B87F232352AE00512784 /* Composer.storyboard in Resources */,
 				48A22AFE2313887C0006F4AB /* LaunchScreen.storyboard in Resources */,
@@ -518,6 +548,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -531,6 +562,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -556,6 +588,7 @@
 				4876B87A2323473200512784 /* Colors.swift in Sources */,
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
 				481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */,
+				48890157237661A5004AD882 /* PostTableCell.swift in Sources */,
 				480FA84B235170A200A61E1F /* PostSharerService.swift in Sources */,
 				48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */,
 				4876B8812323542F00512784 /* GalleryViewController.swift in Sources */,
@@ -574,6 +607,7 @@
 				481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */,
 				48B0732B23220C5D008E6500 /* HomeFlow.swift in Sources */,
 				48B0733623223990008E6500 /* MyProfileViewController.swift in Sources */,
+				48890154237660BD004AD882 /* NewsFeedViewController.swift in Sources */,
 				4876B8832323596C00512784 /* ComposerStrings.swift in Sources */,
 				485A018E233F0857002C4C12 /* Promise.swift in Sources */,
 				48B0733823223D15008E6500 /* ProfileStrings.swift in Sources */,
