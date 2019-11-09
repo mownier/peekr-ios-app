@@ -50,6 +50,7 @@
 		4876B88B23237FC600512784 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876B88A23237FC600512784 /* VideoView.swift */; };
 		48792E722316138500223DF8 /* SignOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48792E712316138500223DF8 /* SignOutService.swift */; };
 		487D77B3232B784600DA51B2 /* TranslationTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */; };
+		4889014F2376585B004AD882 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889014E2376585B004AD882 /* UserService.swift */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
@@ -119,6 +120,7 @@
 		4876B88A23237FC600512784 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		48792E712316138500223DF8 /* SignOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutService.swift; sourceTree = "<group>"; };
 		487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTransitioning.swift; sourceTree = "<group>"; };
+		4889014E2376585B004AD882 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A22AF52313887B0006F4AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				48792E712316138500223DF8 /* SignOutService.swift */,
 				485BA39B2313CCF900A43130 /* SignUpService.swift */,
 				4801F73E235AA70F0002211D /* NewsFeedService.swift */,
+				4889014E2376585B004AD882 /* UserService.swift */,
 			);
 			name = Services;
 			path = lib/core/src/Services;
@@ -548,6 +551,7 @@
 			files = (
 				4876B88B23237FC600512784 /* VideoView.swift in Sources */,
 				48B06A17232C9AFB00EF7E90 /* FileUploadService.swift in Sources */,
+				4889014F2376585B004AD882 /* UserService.swift in Sources */,
 				48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */,
 				4876B87A2323473200512784 /* Colors.swift in Sources */,
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
