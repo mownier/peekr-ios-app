@@ -62,8 +62,7 @@ func makeHomeScreenAsRootOf(window: UIWindow) -> HomeViewController {
             selectedImageName: "icon-home",
             defaultImageName: "icon-home-deselected",
             screen: { _ in
-                let screen = UIViewController()
-                screen.view.backgroundColor = UIColor.red
+                let screen = createNewsFeedViewController()
                 return screen
         }),
         HomeViewController.TabBarItem(

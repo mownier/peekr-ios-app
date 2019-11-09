@@ -7,6 +7,7 @@ def firebase_pods
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
+    pod 'Nuke', '7.6.3'
 end
 
 target 'Peekr' do

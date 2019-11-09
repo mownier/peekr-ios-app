@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4801F73F235AA70F0002211D /* NewsFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4801F73E235AA70F0002211D /* NewsFeedService.swift */; };
+		4801F741235AB15B0002211D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4801F740235AB15B0002211D /* User.swift */; };
 		48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B06231617CC00562F5B /* SignUpViewController.swift */; };
 		48055B09231617D900562F5B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48055B08231617D900562F5B /* Auth.storyboard */; };
 		48055B0B23161B2600562F5B /* AuthStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48055B0A23161B2600562F5B /* AuthStrings.swift */; };
@@ -48,6 +50,11 @@
 		4876B88B23237FC600512784 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876B88A23237FC600512784 /* VideoView.swift */; };
 		48792E722316138500223DF8 /* SignOutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48792E712316138500223DF8 /* SignOutService.swift */; };
 		487D77B3232B784600DA51B2 /* TranslationTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */; };
+		4889014F2376585B004AD882 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889014E2376585B004AD882 /* UserService.swift */; };
+		4889015223766062004AD882 /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4889015123766062004AD882 /* NewsFeed.storyboard */; };
+		48890154237660BD004AD882 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48890153237660BD004AD882 /* NewsFeedViewController.swift */; };
+		48890157237661A5004AD882 /* PostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48890156237661A5004AD882 /* PostTableCell.swift */; };
+		48890159237661DA004AD882 /* PostTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48890158237661DA004AD882 /* PostTableCell.xib */; };
 		48A22AF42313887B0006F4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF32313887B0006F4AB /* AppDelegate.swift */; };
 		48A22AF62313887B0006F4AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A22AF52313887B0006F4AB /* ViewController.swift */; };
 		48A22AF92313887B0006F4AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48A22AF72313887B0006F4AB /* Main.storyboard */; };
@@ -74,6 +81,8 @@
 /* Begin PBXFileReference section */
 		05B02E76514D27ADCE66EAA7 /* Pods_Peekr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peekr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3528431278CB2B94B8356D /* Pods-Peekr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peekr.debug.xcconfig"; path = "Target Support Files/Pods-Peekr/Pods-Peekr.debug.xcconfig"; sourceTree = "<group>"; };
+		4801F73E235AA70F0002211D /* NewsFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedService.swift; sourceTree = "<group>"; };
+		4801F740235AB15B0002211D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		48055B06231617CC00562F5B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		48055B08231617D900562F5B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		48055B0A23161B2600562F5B /* AuthStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStrings.swift; sourceTree = "<group>"; };
@@ -115,6 +124,11 @@
 		4876B88A23237FC600512784 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		48792E712316138500223DF8 /* SignOutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutService.swift; sourceTree = "<group>"; };
 		487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTransitioning.swift; sourceTree = "<group>"; };
+		4889014E2376585B004AD882 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4889015123766062004AD882 /* NewsFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
+		48890153237660BD004AD882 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		48890156237661A5004AD882 /* PostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableCell.swift; sourceTree = "<group>"; };
+		48890158237661DA004AD882 /* PostTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableCell.xib; sourceTree = "<group>"; };
 		48A22AF02313887B0006F4AB /* Peekr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A22AF32313887B0006F4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A22AF52313887B0006F4AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +172,7 @@
 				48055B05231617A300562F5B /* Auth */,
 				4876B87B2323527700512784 /* Composer */,
 				48DFA802231F9DEA0020BE83 /* Home */,
+				488901502376604B004AD882 /* NewsFeed */,
 				481DDB71231CFD6800B36540 /* Onboarding */,
 				48B0733223223965008E6500 /* Profile */,
 				485A018C233F081C002C4C12 /* Shared */,
@@ -201,10 +216,11 @@
 			children = (
 				4876B8792323473200512784 /* Colors.swift */,
 				48055B1E2316531800562F5B /* SimpleAlert.swift */,
+				487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */,
 				48055B25231656EA00562F5B /* UIStrings.swift */,
 				4876B88A23237FC600512784 /* VideoView.swift */,
 				48B0732E232230FB008E6500 /* Colors.xcassets */,
-				487D77B2232B784600DA51B2 /* TranslationTransitioning.swift */,
+				4889015523766174004AD882 /* Cells */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -279,6 +295,7 @@
 				485BA39D2313CD0700A43130 /* Result.swift */,
 				485BA3A32313CE1300A43130 /* Triple.swift */,
 				485A018A233F0342002C4C12 /* VideoFile.swift */,
+				4801F740235AB15B0002211D /* User.swift */,
 			);
 			name = Models;
 			path = lib/core/src/Models;
@@ -292,6 +309,8 @@
 				48BA320E23151930009B2EA6 /* SignInService.swift */,
 				48792E712316138500223DF8 /* SignOutService.swift */,
 				485BA39B2313CCF900A43130 /* SignUpService.swift */,
+				4801F73E235AA70F0002211D /* NewsFeedService.swift */,
+				4889014E2376585B004AD882 /* UserService.swift */,
 			);
 			name = Services;
 			path = lib/core/src/Services;
@@ -309,6 +328,24 @@
 				4876B87C232352A200512784 /* PostComposerViewController.swift */,
 			);
 			path = Composer;
+			sourceTree = "<group>";
+		};
+		488901502376604B004AD882 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				4889015123766062004AD882 /* NewsFeed.storyboard */,
+				48890153237660BD004AD882 /* NewsFeedViewController.swift */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		4889015523766174004AD882 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48890156237661A5004AD882 /* PostTableCell.swift */,
+				48890158237661DA004AD882 /* PostTableCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		48A22AE72313887B0006F4AB = {
@@ -441,7 +478,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48890159237661DA004AD882 /* PostTableCell.xib in Resources */,
 				48DFA804231F9DFC0020BE83 /* Home.storyboard in Resources */,
+				4889015223766062004AD882 /* NewsFeed.storyboard in Resources */,
 				48055B09231617D900562F5B /* Auth.storyboard in Resources */,
 				4876B87F232352AE00512784 /* Composer.storyboard in Resources */,
 				48A22AFE2313887C0006F4AB /* LaunchScreen.storyboard in Resources */,
@@ -509,6 +548,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -522,6 +562,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -542,10 +583,12 @@
 			files = (
 				4876B88B23237FC600512784 /* VideoView.swift in Sources */,
 				48B06A17232C9AFB00EF7E90 /* FileUploadService.swift in Sources */,
+				4889014F2376585B004AD882 /* UserService.swift in Sources */,
 				48156D57231E48AA00AA4B06 /* OnboardingFlow.swift in Sources */,
 				4876B87A2323473200512784 /* Colors.swift in Sources */,
 				48A22AF62313887B0006F4AB /* ViewController.swift in Sources */,
 				481DDB75231CFDB800B36540 /* LandingViewController.swift in Sources */,
+				48890157237661A5004AD882 /* PostTableCell.swift in Sources */,
 				480FA84B235170A200A61E1F /* PostSharerService.swift in Sources */,
 				48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */,
 				4876B8812323542F00512784 /* GalleryViewController.swift in Sources */,
@@ -564,12 +607,15 @@
 				481DDB70231CF6D800B36540 /* SignInViewController.swift in Sources */,
 				48B0732B23220C5D008E6500 /* HomeFlow.swift in Sources */,
 				48B0733623223990008E6500 /* MyProfileViewController.swift in Sources */,
+				48890154237660BD004AD882 /* NewsFeedViewController.swift in Sources */,
 				4876B8832323596C00512784 /* ComposerStrings.swift in Sources */,
 				485A018E233F0857002C4C12 /* Promise.swift in Sources */,
 				48B0733823223D15008E6500 /* ProfileStrings.swift in Sources */,
 				48156D53231E445A00AA4B06 /* AuthFlow.swift in Sources */,
 				48BA320F23151930009B2EA6 /* SignInService.swift in Sources */,
 				48DFA806231F9E4C0020BE83 /* HomeViewController.swift in Sources */,
+				4801F741235AB15B0002211D /* User.swift in Sources */,
+				4801F73F235AA70F0002211D /* NewsFeedService.swift in Sources */,
 				48055B07231617CC00562F5B /* SignUpViewController.swift in Sources */,
 				4876B88923237C2400512784 /* GalleryCollectionCell.swift in Sources */,
 				48A8FC31233DE7F4009D55BB /* ImageFile.swift in Sources */,
