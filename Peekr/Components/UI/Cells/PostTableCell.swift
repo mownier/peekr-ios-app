@@ -18,6 +18,13 @@ public class PostTableCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var cardBackgroundViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var videoView: VideoView!
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        videoView.isLoopEnabled = true
+    }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
