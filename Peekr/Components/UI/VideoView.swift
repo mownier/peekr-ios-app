@@ -13,11 +13,13 @@ import AVFoundation
 class VideoView: UIView {
 
     private var didPlayToEndTimeObserver: NSObjectProtocol?
+    private var didStartPlayingTimeObserver: Any?
     
     private var playerLayer: AVPlayerLayer?
     private var player: AVPlayer?
     
     var isLoopEnabled: Bool = false
+    var onStart: ((VideoView?) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -28,7 +30,7 @@ class VideoView: UIView {
         let videoPlayer = AVPlayer(url: videoURL)
         let videoPlayerLayer = AVPlayerLayer(player: videoPlayer)
         videoPlayerLayer.frame = bounds
-        videoPlayerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        videoPlayerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         layer.addSublayer(videoPlayerLayer)
         
         playerLayer?.removeFromSuperlayer()
@@ -46,6 +48,16 @@ class VideoView: UIView {
         ) {
             self.tryToLoopBack()
         }
+        didStartPlayingTimeObserver = videoPlayer.addBoundaryTimeObserver(
+            forTimes: [NSValue(time: CMTimeMake(value: 1, timescale: 1000))],
+            queue: nil,
+            using: { [weak self] in
+                self?.onStart?(self)
+                if let observer = self?.didStartPlayingTimeObserver {
+                    self?.player?.removeTimeObserver(observer)
+                }
+                self?.didStartPlayingTimeObserver = nil
+        })
         
         return true
     }
@@ -108,6 +120,7 @@ class VideoView: UIView {
     func sanitize() -> Bool {
         stop()
         playerLayer?.removeFromSuperlayer()
+        onStart = nil
         player = nil
         playerLayer = nil
         unregisterBroadcastObserversWith(pairs:
