@@ -41,20 +41,28 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okw-Nt-bsG">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okw-Nt-bsG">
                         <rect key="frame" x="0.0" y="73.5" width="389" height="389"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fyn-Dj-Bbq" userLabel="Preview Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="389" height="389"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcg-Or-Q2W" customClass="VideoView" customModule="Peekr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="389" height="389"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.8270644902469324" green="0.82997157548354705" blue="0.838692831193391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Pcg-Or-Q2W" secondAttribute="bottom" id="9md-iW-bsx"/>
                             <constraint firstItem="Fyn-Dj-Bbq" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="EUQ-f5-V1P"/>
+                            <constraint firstItem="Pcg-Or-Q2W" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="FgF-r5-cHE"/>
                             <constraint firstAttribute="trailing" secondItem="Fyn-Dj-Bbq" secondAttribute="trailing" id="Hv2-O0-G9B"/>
                             <constraint firstAttribute="bottom" secondItem="Fyn-Dj-Bbq" secondAttribute="bottom" id="WE9-z1-jQ4"/>
+                            <constraint firstAttribute="trailing" secondItem="Pcg-Or-Q2W" secondAttribute="trailing" id="d2n-eR-KoH"/>
                             <constraint firstAttribute="width" secondItem="Okw-Nt-bsG" secondAttribute="height" multiplier="1:1" id="mCS-Gw-M6M"/>
+                            <constraint firstItem="Pcg-Or-Q2W" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="yqe-Wz-xJz"/>
                             <constraint firstItem="Fyn-Dj-Bbq" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="ytk-xg-Vyr"/>
                         </constraints>
                     </view>
@@ -98,6 +106,7 @@
                 <outlet property="previewImageView" destination="Fyn-Dj-Bbq" id="rCA-dp-tp2"/>
                 <outlet property="timeLabel" destination="vqw-Qd-Qmy" id="xqc-I5-J2d"/>
                 <outlet property="videoContainer" destination="Okw-Nt-bsG" id="4Nj-Co-OGT"/>
+                <outlet property="videoView" destination="Pcg-Or-Q2W" id="ekX-FE-ktv"/>
             </connections>
             <point key="canvasLocation" x="109.59999999999999" y="5.3973013493253381"/>
         </tableViewCell>
