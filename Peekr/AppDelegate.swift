@@ -21,4 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appFlow?.registerObservers()
         return true
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        removeAllCachedVideos()
+    }
 }
