@@ -79,11 +79,18 @@ extension NewsFeedViewController: UITableViewDataSource {
         cell.videoView.isHidden = true
         if indexOfCurrentPlayingVideo == indexPath.row,
             let url = urlOfCachedVideo(for: post.video.id) ?? URL(string: post.video.downloadURLString) {
+            if url.absoluteString == post.video.downloadURLString {
+                cell.loadingView.startAnimating()
+                
+            } else {
+                cell.loadingView.stopAnimating()
+            }
             cell.videoView.onStart = { view in
                 guard cell.videoView == view else {
                     return
                 }
                 view?.isHidden = false
+                cell.loadingView.stopAnimating()
             }
             cell.videoView.configure(url: url)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -91,6 +98,7 @@ extension NewsFeedViewController: UITableViewDataSource {
             }
             
         } else {
+            cell.loadingView.stopAnimating()
             cell.videoView.sanitize()
         }
         cell.adjustVideoContainerSizeRelative(to:
