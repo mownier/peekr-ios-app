@@ -37,6 +37,21 @@ public class NewsFeedViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tableView
+            .visibleCells
+            .compactMap({ $0 as? PostTableCell })
+            .forEach({ $0.videoView.sanitize() })
+    }
 }
 
 extension NewsFeedViewController: UITableViewDataSource {
