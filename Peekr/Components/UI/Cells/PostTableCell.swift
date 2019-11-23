@@ -19,8 +19,9 @@ public class PostTableCell: UITableViewCell {
     @IBOutlet weak var cardBackgroundViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var videoView: VideoView!
-    @IBOutlet weak var videoContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    
+    private var ratioConstraint: NSLayoutConstraint?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,9 +41,24 @@ public class PostTableCell: UITableViewCell {
     
     @discardableResult
     public func adjustVideoContainerSizeRelative(to videoSize: CGSize) -> PostTableCell {
+        if let constraint = ratioConstraint {
+            ratioConstraint?.isActive = false
+            videoContainer.removeConstraint(constraint)
+        }
         let ratio = videoSize.height / videoSize.width
-        let height = videoContainer.bounds.width * ratio
-        videoContainerHeightConstraint.constant = height
+        let width = videoContainer.bounds.width
+        let height = width * ratio
+        let aspectRatioConstraint = NSLayoutConstraint(
+            item: videoContainer,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: videoContainer,
+            attribute: .width,
+            multiplier: (height / width),
+            constant: 0
+        )
+        videoContainer.addConstraint(aspectRatioConstraint)
+        ratioConstraint = aspectRatioConstraint
         return self
     }
 }
