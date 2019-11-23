@@ -17,6 +17,7 @@ class VideoView: UIView {
     
     private var playerLayer: AVPlayerLayer?
     private var player: AVPlayer?
+    private var videoGravity: AVLayerVideoGravity = .resizeAspect
     
     var isLoopEnabled: Bool = false
     var onStart: ((VideoView?) -> Void)?
@@ -36,7 +37,7 @@ class VideoView: UIView {
         let videoPlayer = AVPlayer(url: videoURL)
         let videoPlayerLayer = AVPlayerLayer(player: videoPlayer)
         videoPlayerLayer.frame = bounds
-        videoPlayerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        videoPlayerLayer.videoGravity = videoGravity
         layer.addSublayer(videoPlayerLayer)
         
         playerLayer?.removeFromSuperlayer()
@@ -134,5 +135,11 @@ class VideoView: UIView {
         )
         didPlayToEndTimeObserver = nil
         return true
+    }
+    
+    @discardableResult
+    func changeVideoGravity(to gravity: AVLayerVideoGravity) -> VideoView {
+        videoGravity = gravity
+        return self
     }
 }
