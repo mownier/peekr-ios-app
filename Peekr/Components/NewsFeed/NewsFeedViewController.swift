@@ -78,7 +78,7 @@ extension NewsFeedViewController: UITableViewDataSource {
         }
         cell.videoView.isHidden = true
         if indexOfCurrentPlayingVideo == indexPath.row,
-            let url = URL(string: post.video.downloadURLString) {
+            let url = urlOfCachedVideo(for: post.video.id) ?? URL(string: post.video.downloadURLString) {
             cell.videoView.onStart = { view in
                 guard cell.videoView == view else {
                     return
@@ -97,6 +97,12 @@ extension NewsFeedViewController: UITableViewDataSource {
                 height: CGFloat(post.video.height)
             )
         )
+        cell.videoView
+            .cacheFileName("\(post.video.id).mp4")
+            .cacheVideoFileType(.mp4)
+            .onVideoCached({ url in
+                addCachedVideo(with: post.video.id, url: url)
+            })
         return cell
     }
 }
