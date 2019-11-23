@@ -86,7 +86,9 @@ extension NewsFeedViewController: UITableViewDataSource {
                 view?.isHidden = false
             }
             cell.videoView.configure(url: url)
-            cell.videoView.play()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                cell.videoView.play()
+            }
             
         } else {
             cell.videoView.sanitize()
