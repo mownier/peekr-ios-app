@@ -98,11 +98,9 @@ extension NewsFeedViewController: UITableViewDataSource {
             )
         )
         cell.videoView
+            .cacheVideoFileKey(post.video.id)
             .cacheFileName("\(post.video.id).mp4")
             .cacheVideoFileType(.mp4)
-            .onVideoCached({ url in
-                addCachedVideo(with: post.video.id, url: url)
-            })
         return cell
     }
 }
