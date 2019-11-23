@@ -25,7 +25,7 @@ public class PostTableCell: UITableViewCell {
         super.awakeFromNib()
         
         videoView.isLoopEnabled = true
-        videoView.changeVideoGravity(to: .resize)
+        videoView.changeVideoGravity(to: .resize).enableCaching()
     }
     
     public override func layoutSubviews() {
