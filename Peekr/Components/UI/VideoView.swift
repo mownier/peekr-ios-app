@@ -18,9 +18,13 @@ class VideoView: UIView {
     private var playerLayer: AVPlayerLayer?
     private var player: AVPlayer?
     private var videoGravity: AVLayerVideoGravity = .resizeAspect
+    private var isCachingEnabled: Bool = false
+    private var cacheFileName: String = ""
+    private var cacheFileVideoType: AVFileType?
     
     var isLoopEnabled: Bool = false
     var onStart: ((VideoView?) -> Void)?
+    var onVideoCached: ((URL) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,7 +57,8 @@ class VideoView: UIView {
         didPlayToEndTimeObserver = registerBroadcastObserverWith(
             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime
         ) {
-            self.tryToLoopBack()
+            self.tryToCacheVideo()
+                .tryToLoopBack()
         }
         didStartPlayingTimeObserver = videoPlayer.addBoundaryTimeObserver(
             forTimes: [NSValue(time: CMTimeMake(value: 1, timescale: 1000))],
@@ -133,6 +138,7 @@ class VideoView: UIView {
         unregisterBroadcastObserversWith(pairs:
             pairWith(first: NSNotification.Name.AVPlayerItemDidPlayToEndTime, second: didPlayToEndTimeObserver)
         )
+        onVideoCached = nil
         didPlayToEndTimeObserver = nil
         return true
     }
@@ -142,4 +148,118 @@ class VideoView: UIView {
         videoGravity = gravity
         return self
     }
+    
+    @discardableResult
+    func enableCaching() -> VideoView {
+        isCachingEnabled = true
+        return self
+    }
+    
+    @discardableResult
+    func disableCaching() -> VideoView {
+        isCachingEnabled = false
+        return self
+    }
+    
+    @discardableResult
+    func cacheFileName(_ fileName: String) -> VideoView {
+        cacheFileName = fileName
+        return self
+    }
+    
+    @discardableResult
+    func cacheVideoFileType(_ type: AVFileType) -> VideoView {
+        cacheFileVideoType = type
+        return self
+    }
+    
+    @discardableResult
+    func onVideoCached(_ block: @escaping (URL) -> Void) -> VideoView {
+        onVideoCached = block
+        return self
+    }
+    
+    @discardableResult
+    func tryToCacheVideo() -> VideoView {
+        guard isCachingEnabled,
+            !cacheFileName.isEmpty,
+            let item = player?.currentItem,
+            item.asset.isExportable,
+            let fileType = cacheFileVideoType else {
+                return self
+        }
+        let composition = AVMutableComposition()
+        let compositionVideoTrack = composition.addMutableTrack(
+            withMediaType: .video,
+            preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid)
+        )
+        let compositionAudioTrack = composition.addMutableTrack(
+            withMediaType: .audio,
+            preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid)
+        )
+        let sourceVideoTrack = item.asset.tracks(withMediaType: .video).first!
+        let sourceAudioTrack = item.asset.tracks(withMediaType: .audio).first!
+        do {
+            try compositionVideoTrack?.insertTimeRange(
+                CMTimeRangeMake(start: CMTime.zero, duration: item.duration),
+                of: sourceVideoTrack,
+                at: CMTime.zero
+            )
+            try compositionAudioTrack?.insertTimeRange(
+                CMTimeRangeMake(start: CMTime.zero, duration: item.duration),
+                of: sourceAudioTrack,
+                at: CMTime.zero
+            )
+        } catch(_) {
+            return self
+        }
+        let fileManager = FileManager.default
+        guard
+            let exporter = AVAssetExportSession(
+                asset: composition,
+                presetName: AVAssetExportPresetHighestQuality
+            ),
+            let cacheDirectory = fileManager.urls(
+                for: .cachesDirectory,
+                in: .userDomainMask
+            ).first else {
+                return self
+        }
+        let outputURL = cacheDirectory.appendingPathComponent(cacheFileName)
+        if fileManager.isDeletableFile(atPath: outputURL.path) {
+            try? fileManager.removeItem(at: outputURL)
+        }
+        exporter.outputURL = outputURL
+        exporter.outputFileType = fileType
+        exporter.exportAsynchronously { [weak self] in
+            guard exporter.status == .completed,
+                exporter.error == nil else {
+                return
+            }
+            self?.onVideoCached?(outputURL)
+        }
+        return self
+    }
+}
+
+private var videoCacheURLs: [String: URL] = [:]
+
+@discardableResult
+func removeAllCachedVideos() -> Bool {
+    let fileManager = FileManager.default
+    videoCacheURLs.forEach({
+        try? fileManager.removeItem(at: $0.value)
+    })
+    return true
+}
+
+@discardableResult
+func addCachedVideo(with key: String, url: URL) -> Bool {
+    videoCacheURLs[key] = url
+    return true
+}
+
+@discardableResult
+func urlOfCachedVideo(for key: String) -> URL? {
+    return videoCacheURLs[key]
 }
