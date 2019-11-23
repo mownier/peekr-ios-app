@@ -19,12 +19,12 @@ class VideoView: UIView {
     private var player: AVPlayer?
     private var videoGravity: AVLayerVideoGravity = .resizeAspect
     private var isCachingEnabled: Bool = false
+    private var cacheFileVideoKey: String = ""
     private var cacheFileName: String = ""
     private var cacheFileVideoType: AVFileType?
     
     var isLoopEnabled: Bool = false
     var onStart: ((VideoView?) -> Void)?
-    var onVideoCached: ((URL) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -138,7 +138,6 @@ class VideoView: UIView {
         unregisterBroadcastObserversWith(pairs:
             pairWith(first: NSNotification.Name.AVPlayerItemDidPlayToEndTime, second: didPlayToEndTimeObserver)
         )
-        onVideoCached = nil
         didPlayToEndTimeObserver = nil
         return true
     }
@@ -174,8 +173,8 @@ class VideoView: UIView {
     }
     
     @discardableResult
-    func onVideoCached(_ block: @escaping (URL) -> Void) -> VideoView {
-        onVideoCached = block
+    func cacheVideoFileKey(_ key: String) -> VideoView {
+        cacheFileVideoKey = key
         return self
     }
     
@@ -183,6 +182,7 @@ class VideoView: UIView {
     func tryToCacheVideo() -> VideoView {
         guard isCachingEnabled,
             !cacheFileName.isEmpty,
+            !cacheFileVideoKey.isEmpty,
             let item = player?.currentItem,
             item.asset.isExportable,
             let fileType = cacheFileVideoType else {
@@ -225,18 +225,19 @@ class VideoView: UIView {
             ).first else {
                 return self
         }
+        let cacheKey = cacheFileVideoKey
         let outputURL = cacheDirectory.appendingPathComponent(cacheFileName)
         if fileManager.isDeletableFile(atPath: outputURL.path) {
             try? fileManager.removeItem(at: outputURL)
         }
         exporter.outputURL = outputURL
         exporter.outputFileType = fileType
-        exporter.exportAsynchronously { [weak self] in
+        exporter.exportAsynchronously {
             guard exporter.status == .completed,
                 exporter.error == nil else {
                 return
             }
-            self?.onVideoCached?(outputURL)
+            addCachedVideo(with: cacheKey, url: outputURL)
         }
         return self
     }
@@ -254,7 +255,7 @@ func removeAllCachedVideos() -> Bool {
 }
 
 @discardableResult
-func addCachedVideo(with key: String, url: URL) -> Bool {
+private func addCachedVideo(with key: String, url: URL) -> Bool {
     videoCacheURLs[key] = url
     return true
 }
