@@ -25,6 +25,12 @@ class VideoView: UIView {
         super.init(coder: aDecoder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        playerLayer?.frame = bounds
+    }
+    
     @discardableResult
     func configure(url videoURL: URL) -> Bool {
         let videoPlayer = AVPlayer(url: videoURL)
