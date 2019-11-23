@@ -61,8 +61,8 @@
                         <color key="backgroundColor" red="0.8270644902469324" green="0.82997157548354705" blue="0.838692831193391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Pcg-Or-Q2W" secondAttribute="bottom" id="9md-iW-bsx"/>
-                            <constraint firstAttribute="height" constant="389" id="9z7-Xv-2x2"/>
                             <constraint firstItem="Fyn-Dj-Bbq" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="EUQ-f5-V1P"/>
+                            <constraint firstAttribute="width" secondItem="Okw-Nt-bsG" secondAttribute="height" multiplier="1:1" placeholder="YES" id="FPF-KN-Kjf"/>
                             <constraint firstItem="Pcg-Or-Q2W" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="FgF-r5-cHE"/>
                             <constraint firstAttribute="trailing" secondItem="Fyn-Dj-Bbq" secondAttribute="trailing" id="Hv2-O0-G9B"/>
                             <constraint firstAttribute="bottom" secondItem="Fyn-Dj-Bbq" secondAttribute="bottom" id="WE9-z1-jQ4"/>
@@ -116,7 +116,6 @@
                 <outlet property="previewImageView" destination="Fyn-Dj-Bbq" id="rCA-dp-tp2"/>
                 <outlet property="timeLabel" destination="vqw-Qd-Qmy" id="xqc-I5-J2d"/>
                 <outlet property="videoContainer" destination="Okw-Nt-bsG" id="4Nj-Co-OGT"/>
-                <outlet property="videoContainerHeightConstraint" destination="9z7-Xv-2x2" id="8xc-hr-NcC"/>
                 <outlet property="videoView" destination="Pcg-Or-Q2W" id="ekX-FE-ktv"/>
             </connections>
             <point key="canvasLocation" x="109.59999999999999" y="5.3973013493253381"/>
