@@ -52,6 +52,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="389" height="389"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qne-wh-RQv">
+                                <rect key="frame" x="0.0" y="0.0" width="389" height="389"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.8270644902469324" green="0.82997157548354705" blue="0.838692831193391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -61,7 +66,11 @@
                             <constraint firstItem="Pcg-Or-Q2W" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="FgF-r5-cHE"/>
                             <constraint firstAttribute="trailing" secondItem="Fyn-Dj-Bbq" secondAttribute="trailing" id="Hv2-O0-G9B"/>
                             <constraint firstAttribute="bottom" secondItem="Fyn-Dj-Bbq" secondAttribute="bottom" id="WE9-z1-jQ4"/>
+                            <constraint firstAttribute="bottom" secondItem="Qne-wh-RQv" secondAttribute="bottom" id="Yhv-Mo-YHR"/>
                             <constraint firstAttribute="trailing" secondItem="Pcg-Or-Q2W" secondAttribute="trailing" id="d2n-eR-KoH"/>
+                            <constraint firstItem="Qne-wh-RQv" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="gkl-Vp-ty4"/>
+                            <constraint firstAttribute="trailing" secondItem="Qne-wh-RQv" secondAttribute="trailing" id="m4d-LU-ze4"/>
+                            <constraint firstItem="Qne-wh-RQv" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="oGf-ho-jHb"/>
                             <constraint firstItem="Pcg-Or-Q2W" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="yqe-Wz-xJz"/>
                             <constraint firstItem="Fyn-Dj-Bbq" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="ytk-xg-Vyr"/>
                         </constraints>
@@ -102,6 +111,7 @@
                 <outlet property="cardBackgroundView" destination="DkH-QR-Ipi" id="Ebk-n2-kvZ"/>
                 <outlet property="cardBackgroundViewTopConstraint" destination="dct-j9-3c9" id="Ytp-Zz-aJe"/>
                 <outlet property="displayNameLabel" destination="s3S-1E-HOq" id="Rzd-KN-Lze"/>
+                <outlet property="loadingView" destination="Qne-wh-RQv" id="otJ-Pv-yIP"/>
                 <outlet property="messageLabel" destination="ya8-rf-zlT" id="JaD-Bo-zhi"/>
                 <outlet property="previewImageView" destination="Fyn-Dj-Bbq" id="rCA-dp-tp2"/>
                 <outlet property="timeLabel" destination="vqw-Qd-Qmy" id="xqc-I5-J2d"/>

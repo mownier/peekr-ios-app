@@ -20,6 +20,7 @@ public class PostTableCell: UITableViewCell {
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var videoContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     public override func awakeFromNib() {
         super.awakeFromNib()
