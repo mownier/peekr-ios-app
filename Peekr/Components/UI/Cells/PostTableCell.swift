@@ -19,11 +19,13 @@ public class PostTableCell: UITableViewCell {
     @IBOutlet weak var cardBackgroundViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var videoView: VideoView!
+    @IBOutlet weak var videoContainerHeightConstraint: NSLayoutConstraint!
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         
         videoView.isLoopEnabled = true
+        videoView.changeVideoGravity(to: .resize)
     }
     
     public override func layoutSubviews() {
@@ -31,5 +33,15 @@ public class PostTableCell: UITableViewCell {
         
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
+        videoView.layoutIfNeeded()
+        videoView.setNeedsLayout()
+    }
+    
+    @discardableResult
+    public func adjustVideoContainerSizeRelative(to videoSize: CGSize) -> PostTableCell {
+        let ratio = videoSize.height / videoSize.width
+        let height = videoContainer.bounds.width * ratio
+        videoContainerHeightConstraint.constant = height
+        return self
     }
 }

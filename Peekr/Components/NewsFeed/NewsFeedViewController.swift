@@ -76,6 +76,12 @@ extension NewsFeedViewController: UITableViewDataSource {
         } else {
             cell.videoView.sanitize()
         }
+        cell.adjustVideoContainerSizeRelative(to:
+            CGSize(
+                width: CGFloat(post.video.width),
+                height: CGFloat(post.video.height)
+            )
+        )
         return cell
     }
 }
