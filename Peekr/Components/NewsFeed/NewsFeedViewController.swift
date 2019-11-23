@@ -122,6 +122,17 @@ extension NewsFeedViewController: UITableViewDelegate {
         cell?.videoView.isHidden = true
         cell?.videoView.sanitize()
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexOfCurrentPlayingVideo != indexPath.row else {
+            return
+        }
+        let currentIndexPath = IndexPath(row: indexOfCurrentPlayingVideo, section: 0)
+        indexOfCurrentPlayingVideo = indexPath.row
+        UIView.setAnimationsEnabled(false)
+        tableView.reloadRows(at: [currentIndexPath, indexPath], with: .none)
+        UIView.setAnimationsEnabled(true)
+    }
 }
 
 extension NewsFeedViewController: UIScrollViewDelegate {
