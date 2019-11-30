@@ -219,6 +219,6 @@ func formatPlayingTime(_ seconds: Double) -> String {
 extension Double {
     
     func toInt() -> Int {
-        return Int(self)
+        return (isInfinite || isNaN) ? 0 : Int(self)
     }
 }
