@@ -24,7 +24,8 @@ class VideoView: UIView {
     private var cacheFileVideoType: AVFileType?
     
     var isLoopEnabled: Bool = false
-    var onStart: ((VideoView?) -> Void)?
+    var onStart: ((VideoView) -> Void)?
+    var onReadyToPlay: ((VideoView) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,12 +37,39 @@ class VideoView: UIView {
         playerLayer?.frame = bounds
     }
     
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
+        guard let videoPlayer = player,
+            object as AnyObject? === videoPlayer else {
+                return
+        }
+        if keyPath == "status" {
+            if videoPlayer.status == .readyToPlay {
+                onReadyToPlay?(self)
+                play()
+            }
+            return
+        }
+        if keyPath == "rate" {
+            if videoPlayer.rate > 0 {
+                onStart?(self)
+            }
+        }
+    }
+    
     @discardableResult
     func configure(url videoURL: URL) -> Bool {
         let videoPlayer = AVPlayer(url: videoURL)
         let videoPlayerLayer = AVPlayerLayer(player: videoPlayer)
         videoPlayerLayer.frame = bounds
         videoPlayerLayer.videoGravity = videoGravity
+        videoPlayer.addObserver(self, forKeyPath: "rate", options: [.old, .new], context: nil)
+        videoPlayer.addObserver(self, forKeyPath: "status", options: [.old, .new], context: nil)
+        videoPlayer.isMuted = true
         layer.addSublayer(videoPlayerLayer)
         
         playerLayer?.removeFromSuperlayer()
@@ -60,17 +88,6 @@ class VideoView: UIView {
             self.tryToCacheVideo()
                 .tryToLoopBack()
         }
-        didStartPlayingTimeObserver = videoPlayer.addBoundaryTimeObserver(
-            forTimes: [NSValue(time: CMTimeMake(value: 1, timescale: 1000))],
-            queue: nil,
-            using: { [weak self] in
-                self?.onStart?(self)
-                if let observer = self?.didStartPlayingTimeObserver {
-                    self?.player?.removeTimeObserver(observer)
-                }
-                self?.didStartPlayingTimeObserver = nil
-        })
-        
         return true
     }
     
@@ -131,7 +148,10 @@ class VideoView: UIView {
     @discardableResult
     func sanitize() -> Bool {
         stop()
+        player?.removeObserver(self, forKeyPath: "rate")
+        player?.removeObserver(self, forKeyPath: "status")
         playerLayer?.removeFromSuperlayer()
+        onReadyToPlay = nil
         onStart = nil
         player = nil
         playerLayer = nil
