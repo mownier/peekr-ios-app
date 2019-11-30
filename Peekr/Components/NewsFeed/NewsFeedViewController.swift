@@ -76,6 +76,8 @@ extension NewsFeedViewController: UITableViewDataSource {
         if let url = URL(string: post.thumbnail.downloadURLString) {
             Nuke.loadImage(with: url, into: cell.previewImageView)
         }
+        cell.elapsedTimeLabel.isHidden = true
+        cell.muteToggleButton.isHidden = true
         cell.videoView.isHidden = true
         if indexOfCurrentPlayingVideo == indexPath.row,
             let url = urlOfCachedVideo(for: post.video.id) ?? URL(string: post.video.downloadURLString) {
@@ -93,13 +95,18 @@ extension NewsFeedViewController: UITableViewDataSource {
                 cell.loadingView.stopAnimating()
             }
             cell.videoView.onReadyToPlay = { _ in
-                // TODO: Get ready the progress
+                cell.elapsedTimeLabel.isHidden = false
+                cell.muteToggleButton.isHidden = false
+                cell.elapsedTimeLabel.text = formatPlayingTime(0.0)
             }
             cell.videoView.configure(url: url)
             
         } else {
             cell.loadingView.stopAnimating()
             cell.videoView.sanitize()
+        }
+        cell.videoView.onRemainingTimeInSeconds = { _, seconds in
+            cell.elapsedTimeLabel.text = formatPlayingTime(seconds)
         }
         cell.adjustVideoContainerSizeRelative(to:
             CGSize(
@@ -154,4 +161,51 @@ extension NewsFeedViewController: UIScrollViewDelegate {
 public func createNewsFeedViewController() -> NewsFeedViewController {
     let screen: NewsFeedViewController = viewControllerFromStoryboardWith(name: "NewsFeed")
     return screen
+}
+
+func formatPlayingTime(_ seconds: Double) -> String {
+    let time = seconds
+    let h = (time / 3600.0).toInt()
+    let m = ((time - Double(h) * 3600) / 60).toInt()
+    let s = (time - Double(h * 3600 + m * 60)).toInt()
+    
+    let hourFormat: String
+    if (h > 0) {
+        if (h < 10) {
+            hourFormat = "0\(h)"
+        } else {
+            hourFormat = "\(h)"
+        }
+        
+    } else {
+        hourFormat = ""
+    }
+    
+    let minuteFormat: String
+    if hourFormat.isEmpty || m >= 10 {
+        minuteFormat = "\(m)"
+    
+    } else {
+        minuteFormat = "0\(m)"
+    }
+    
+    
+    let secondFormat: String
+    if s < 10 {
+        secondFormat = "0\(s)"
+        
+    } else {
+        secondFormat = "\(s)"
+    }
+    
+    return [hourFormat, minuteFormat, secondFormat]
+        .filter({ !$0.isEmpty })
+        .joined(separator: ":")
+}
+
+extension Double {
+    
+    func toInt() -> Int {
+        return Int(self)
+    }
 }

@@ -13,7 +13,7 @@ import AVFoundation
 class VideoView: UIView {
 
     private var didPlayToEndTimeObserver: NSObjectProtocol?
-    private var didStartPlayingTimeObserver: Any?
+    private var periodicTimeObserver: Any?
     
     private var playerLayer: AVPlayerLayer?
     private var player: AVPlayer?
@@ -26,6 +26,7 @@ class VideoView: UIView {
     var isLoopEnabled: Bool = false
     var onStart: ((VideoView) -> Void)?
     var onReadyToPlay: ((VideoView) -> Void)?
+    var onRemainingTimeInSeconds: ((VideoView?, Double) -> Void)?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -50,6 +51,7 @@ class VideoView: UIView {
         if keyPath == "status" {
             if videoPlayer.status == .readyToPlay {
                 onReadyToPlay?(self)
+                addPeriodicTimeObserver()
                 play()
             }
             return
@@ -148,9 +150,14 @@ class VideoView: UIView {
     @discardableResult
     func sanitize() -> Bool {
         stop()
+        if let observer = periodicTimeObserver {
+            player?.removeTimeObserver(observer)
+            periodicTimeObserver = nil
+        }
         player?.removeObserver(self, forKeyPath: "rate")
         player?.removeObserver(self, forKeyPath: "status")
         playerLayer?.removeFromSuperlayer()
+        onRemainingTimeInSeconds = nil
         onReadyToPlay = nil
         onStart = nil
         player = nil
@@ -258,6 +265,24 @@ class VideoView: UIView {
                 return
             }
             addCachedVideo(with: cacheKey, url: outputURL)
+        }
+        return self
+    }
+    
+    @discardableResult
+    func addPeriodicTimeObserver() -> VideoView {
+        let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        let mainQueue = DispatchQueue.main
+        periodicTimeObserver = player?.addPeriodicTimeObserver(
+            forInterval: interval,
+            queue: mainQueue
+        ) { [weak self] time in
+            let currentSeconds = CMTimeGetSeconds(time)
+            guard let duration = self?.player?.currentItem?.duration else {
+                return
+            }
+            let totalSeconds = CMTimeGetSeconds(duration)
+            self?.onRemainingTimeInSeconds?(self, totalSeconds - currentSeconds)
         }
         return self
     }

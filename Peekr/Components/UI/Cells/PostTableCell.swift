@@ -20,6 +20,8 @@ public class PostTableCell: UITableViewCell {
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var elapsedTimeLabel: UILabel!
+    @IBOutlet weak var muteToggleButton: UIButton!
     
     private var ratioConstraint: NSLayoutConstraint?
     
@@ -60,5 +62,10 @@ public class PostTableCell: UITableViewCell {
         videoContainer.addConstraint(aspectRatioConstraint)
         ratioConstraint = aspectRatioConstraint
         return self
+    }
+    
+    @objc
+    @IBAction func onTapMuteToggleButton() {
+        
     }
 }
