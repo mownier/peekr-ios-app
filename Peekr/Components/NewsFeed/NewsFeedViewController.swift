@@ -89,13 +89,13 @@ extension NewsFeedViewController: UITableViewDataSource {
                 guard cell.videoView == view else {
                     return
                 }
-                view?.isHidden = false
+                cell.videoView.isHidden = false
                 cell.loadingView.stopAnimating()
             }
-            cell.videoView.configure(url: url)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                cell.videoView.play()
+            cell.videoView.onReadyToPlay = { _ in
+                // TODO: Get ready the progress
             }
+            cell.videoView.configure(url: url)
             
         } else {
             cell.loadingView.stopAnimating()
