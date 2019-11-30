@@ -94,6 +94,14 @@ extension NewsFeedViewController: UITableViewDataSource {
                     return
                 }
                 cell.videoView.isHidden = false
+                cell.videoView.alpha = 0.0
+                UIView.animate(
+                    withDuration: 0.25,
+                    delay: 0.0,
+                    options: [.curveEaseIn],
+                    animations: {
+                        cell.videoView.alpha = 1.0
+                }) { _ in }
                 cell.loadingView.stopAnimating()
             }
             cell.videoView.onReadyToPlay = { _ in
