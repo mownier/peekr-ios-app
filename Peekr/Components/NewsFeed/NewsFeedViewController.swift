@@ -77,7 +77,7 @@ extension NewsFeedViewController: UITableViewDataSource {
             Nuke.loadImage(with: url, into: cell.previewImageView)
         }
         cell.elapsedTimeLabel.isHidden = true
-        cell.muteToggleButton.isHidden = true
+        cell.soundButton.isHidden = true
         cell.videoView.isHidden = true
         if indexOfCurrentPlayingVideo == indexPath.row,
             let url = urlOfCachedVideo(for: post.video.id) ?? URL(string: post.video.downloadURLString) {
@@ -96,7 +96,7 @@ extension NewsFeedViewController: UITableViewDataSource {
             }
             cell.videoView.onReadyToPlay = { _ in
                 cell.elapsedTimeLabel.isHidden = false
-                cell.muteToggleButton.isHidden = false
+                cell.soundButton.isHidden = false
                 cell.elapsedTimeLabel.text = formatPlayingTime(0.0)
             }
             cell.videoView.configure(url: url)
@@ -118,7 +118,7 @@ extension NewsFeedViewController: UITableViewDataSource {
             .cacheVideoFileKey(post.video.id)
             .cacheFileName("\(post.video.id).mp4")
             .cacheVideoFileType(.mp4)
-        return cell
+        return cell.delegate(self)
     }
 }
 
@@ -155,6 +155,17 @@ extension NewsFeedViewController: UIScrollViewDelegate {
         UIView.setAnimationsEnabled(false)
         tableView.reloadRows(at: [currentIndexPath, indexPathAtCenter], with: .none)
         UIView.setAnimationsEnabled(true)
+    }
+}
+
+extension NewsFeedViewController: PostTableCellDelegate {
+    
+    public func postTableCellOnMuted(_ cell: PostTableCell) {
+        cell.updateTextOfSoundButton("Unmute")
+    }
+    
+    public func postTableCellOnUnmuted(_ cell: PostTableCell) {
+        cell.updateTextOfSoundButton("Mute")
     }
 }
 

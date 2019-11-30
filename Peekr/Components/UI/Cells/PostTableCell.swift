@@ -21,15 +21,27 @@ public class PostTableCell: UITableViewCell {
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var elapsedTimeLabel: UILabel!
-    @IBOutlet weak var muteToggleButton: UIButton!
+    @IBOutlet weak var soundButton: UIButton!
     
     private var ratioConstraint: NSLayoutConstraint?
+    weak var delegate: PostTableCellDelegate?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         
         videoView.isLoopEnabled = true
         videoView.changeVideoGravity(to: .resize).enableCaching()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onTapToToggleMute))
+        tap.numberOfTapsRequired = 1
+        videoView.addGestureRecognizer(tap)
+    }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        updateTextOfSoundButton("Unmute")
+        elapsedTimeLabel.text = "0:00"
     }
     
     public override func layoutSubviews() {
@@ -64,8 +76,32 @@ public class PostTableCell: UITableViewCell {
         return self
     }
     
-    @objc
-    @IBAction func onTapMuteToggleButton() {
-        
+    @discardableResult
+    public func delegate(_ value: PostTableCellDelegate) -> PostTableCell {
+        delegate = value
+        return self
     }
+    
+    @discardableResult
+    public func updateTextOfSoundButton(_ text: String) -> PostTableCell {
+        soundButton.setTitle(text, for: .normal)
+        return self
+    }
+    
+    @objc
+    func onTapToToggleMute() {
+        if videoView.isMuted() {
+            videoView.unmute()
+            delegate?.postTableCellOnUnmuted(self)
+            return
+        }
+        videoView.mute()
+        delegate?.postTableCellOnMuted(self)
+    }
+}
+
+public protocol PostTableCellDelegate: class {
+    
+    func postTableCellOnMuted(_ cell: PostTableCell)
+    func postTableCellOnUnmuted(_ cell: PostTableCell)
 }

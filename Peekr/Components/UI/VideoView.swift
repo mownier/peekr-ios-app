@@ -286,6 +286,22 @@ class VideoView: UIView {
         }
         return self
     }
+    
+    @discardableResult
+    func mute() -> VideoView {
+        player?.isMuted = true
+        return self
+    }
+    
+    @discardableResult
+    func unmute() -> VideoView {
+        player?.isMuted = false
+        return self
+    }
+    
+    func isMuted() -> Bool {
+        return player?.isMuted ?? false
+    }
 }
 
 private var videoCacheURLs: [String: URL] = [:]
