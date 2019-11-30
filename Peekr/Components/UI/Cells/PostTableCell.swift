@@ -37,13 +37,6 @@ public class PostTableCell: UITableViewCell {
         videoView.addGestureRecognizer(tap)
     }
     
-    public override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        updateTextOfSoundButton("Unmute")
-        elapsedTimeLabel.text = "0:00"
-    }
-    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -83,8 +76,8 @@ public class PostTableCell: UITableViewCell {
     }
     
     @discardableResult
-    public func updateTextOfSoundButton(_ text: String) -> PostTableCell {
-        soundButton.setTitle(text, for: .normal)
+    public func updateImageOfSoundButtonWith(name: String) -> PostTableCell {
+        soundButton.setImage(UIImage(named: name), for: .normal)
         return self
     }
     

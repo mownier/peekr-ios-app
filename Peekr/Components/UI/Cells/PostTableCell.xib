@@ -56,15 +56,15 @@
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfY-28-zvc" userLabel="Elapsed Time Label">
-                                <rect key="frame" x="350" y="8" width="31" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="354.5" y="8" width="26.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIw-oh-O9u" userLabel="Sound Button">
-                                <rect key="frame" x="8" y="358" width="45" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Unmute">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIw-oh-O9u" userLabel="Sound Button">
+                                <rect key="frame" x="12" y="355" width="20" height="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="icon-volume">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
@@ -73,14 +73,14 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Pcg-Or-Q2W" secondAttribute="bottom" id="9md-iW-bsx"/>
                             <constraint firstItem="UfY-28-zvc" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" constant="8" id="Bby-Qm-qTA"/>
-                            <constraint firstAttribute="bottom" secondItem="aIw-oh-O9u" secondAttribute="bottom" constant="4" id="Cns-e8-wCZ"/>
+                            <constraint firstAttribute="bottom" secondItem="aIw-oh-O9u" secondAttribute="bottom" constant="12" id="Cns-e8-wCZ"/>
                             <constraint firstItem="Fyn-Dj-Bbq" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="EUQ-f5-V1P"/>
                             <constraint firstAttribute="width" secondItem="Okw-Nt-bsG" secondAttribute="height" multiplier="1:1" placeholder="YES" id="FPF-KN-Kjf"/>
                             <constraint firstItem="Pcg-Or-Q2W" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" id="FgF-r5-cHE"/>
                             <constraint firstAttribute="trailing" secondItem="Fyn-Dj-Bbq" secondAttribute="trailing" id="Hv2-O0-G9B"/>
                             <constraint firstAttribute="bottom" secondItem="Fyn-Dj-Bbq" secondAttribute="bottom" id="WE9-z1-jQ4"/>
                             <constraint firstAttribute="bottom" secondItem="Qne-wh-RQv" secondAttribute="bottom" id="Yhv-Mo-YHR"/>
-                            <constraint firstItem="aIw-oh-O9u" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" constant="8" id="aw0-op-acy"/>
+                            <constraint firstItem="aIw-oh-O9u" firstAttribute="leading" secondItem="Okw-Nt-bsG" secondAttribute="leading" constant="12" id="aw0-op-acy"/>
                             <constraint firstAttribute="trailing" secondItem="Pcg-Or-Q2W" secondAttribute="trailing" id="d2n-eR-KoH"/>
                             <constraint firstItem="Qne-wh-RQv" firstAttribute="top" secondItem="Okw-Nt-bsG" secondAttribute="top" id="gkl-Vp-ty4"/>
                             <constraint firstAttribute="trailing" secondItem="Qne-wh-RQv" secondAttribute="trailing" id="m4d-LU-ze4"/>
@@ -140,5 +140,6 @@
     </objects>
     <resources>
         <image name="card-white-bg" width="6.5" height="6.5"/>
+        <image name="icon-volume" width="20" height="20"/>
     </resources>
 </document>

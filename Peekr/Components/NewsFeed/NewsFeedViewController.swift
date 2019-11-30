@@ -76,6 +76,8 @@ extension NewsFeedViewController: UITableViewDataSource {
         if let url = URL(string: post.thumbnail.downloadURLString) {
             Nuke.loadImage(with: url, into: cell.previewImageView)
         }
+        cell.updateImageOfSoundButtonWith(name: "icon-volume")
+        cell.elapsedTimeLabel.text = formatPlayingTime(0.0)
         cell.elapsedTimeLabel.isHidden = true
         cell.soundButton.isHidden = true
         cell.videoView.isHidden = true
@@ -161,11 +163,11 @@ extension NewsFeedViewController: UIScrollViewDelegate {
 extension NewsFeedViewController: PostTableCellDelegate {
     
     public func postTableCellOnMuted(_ cell: PostTableCell) {
-        cell.updateTextOfSoundButton("Unmute")
+        cell.updateImageOfSoundButtonWith(name: "icon-volume")
     }
     
     public func postTableCellOnUnmuted(_ cell: PostTableCell) {
-        cell.updateTextOfSoundButton("Mute")
+        cell.updateImageOfSoundButtonWith(name: "icon-volume-high")
     }
 }
 
