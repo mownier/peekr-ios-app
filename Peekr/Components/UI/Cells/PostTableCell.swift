@@ -35,6 +35,16 @@ public class PostTableCell: UITableViewCell {
         let tap = UITapGestureRecognizer(target: self, action: #selector(onTapToToggleMute))
         tap.numberOfTapsRequired = 1
         videoView.addGestureRecognizer(tap)
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(onTapUserRelatedView))
+        tap.numberOfTapsRequired = 1
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tap1)
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(onTapUserRelatedView))
+        tap.numberOfTapsRequired = 1
+        displayNameLabel.isUserInteractionEnabled = true
+        displayNameLabel.addGestureRecognizer(tap2)
     }
     
     public override func layoutSubviews() {
@@ -91,10 +101,16 @@ public class PostTableCell: UITableViewCell {
         videoView.mute()
         delegate?.postTableCellOnMuted(self)
     }
+    
+    @objc
+    func onTapUserRelatedView() {
+        delegate?.postTableCellWillShowUser(self)
+    }
 }
 
 public protocol PostTableCellDelegate: class {
     
     func postTableCellOnMuted(_ cell: PostTableCell)
     func postTableCellOnUnmuted(_ cell: PostTableCell)
+    func postTableCellWillShowUser(_ cell: PostTableCell)
 }
