@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +30,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-A1-PGp" userLabel="Avatar Image View">
-                                <rect key="frame" x="127.5" y="56" width="120" height="120"/>
+                                <rect key="frame" x="127.5" y="36" width="120" height="120"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.66274509800000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="6pZ-1K-vY9"/>
@@ -40,7 +38,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRe-9R-DDr" userLabel="Close Button">
-                                <rect key="frame" x="16" y="36" width="36" height="36"/>
+                                <rect key="frame" x="16" y="16" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="0iT-Dw-15V"/>
                                     <constraint firstAttribute="width" constant="36" id="7oX-Hv-lE5"/>
@@ -73,8 +71,119 @@
             </objects>
             <point key="canvasLocation" x="-394" y="90"/>
         </scene>
+        <!--User Profile-->
+        <scene sceneID="LbY-pc-hwg">
+            <objects>
+                <viewController storyboardIdentifier="UserProfileScreen" title="User Profile" id="DaA-1P-GzC" customClass="UserProfileScreen" customModule="Peekr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aQ2-A7-VxN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uk3-oA-uJb" userLabel="Avatar Image View">
+                                <rect key="frame" x="127.5" y="36" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.64313725489999995" green="0.66274509800000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="hcb-Si-qsx"/>
+                                    <constraint firstAttribute="width" constant="120" id="viX-pH-dX2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPk-9z-an7" userLabel="Following Button">
+                                <rect key="frame" x="24" y="180" width="327" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.65943402949999996" blue="0.6298921851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="To7-Km-fS4"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                <state key="normal" title="Following">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapFollowingButton" destination="DaA-1P-GzC" eventType="touchUpInside" id="3US-PV-UkZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjZ-KD-WSi" userLabel="Follow Button">
+                                <rect key="frame" x="24" y="180" width="327" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.5154109589041096" blue="0.63382971286773682" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                                <state key="normal" title="Follow">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapFollowButton" destination="DaA-1P-GzC" eventType="touchUpInside" id="Pdh-Ug-jCB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4A-dx-PN4">
+                                <rect key="frame" x="24" y="258" width="327" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3X-DO-L58" userLabel="Close Button">
+                                <rect key="frame" x="169.5" y="607" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="Lxh-mG-0he"/>
+                                    <constraint firstAttribute="height" constant="36" id="TEm-Ej-OgA"/>
+                                </constraints>
+                                <state key="normal" image="icon-cross"/>
+                                <connections>
+                                    <action selector="onTapCloseButton" destination="DaA-1P-GzC" eventType="touchUpInside" id="DxC-3c-j0Z"/>
+                                    <action selector="onTapCloseButton" destination="rWG-RZ-agX" eventType="touchUpInside" id="ePu-Cz-Ka2"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-gJ-Fh1">
+                                <rect key="frame" x="24" y="180" width="327" height="44"/>
+                            </activityIndicatorView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zSO-5c-5rJ" userLabel="Follow Request Indicator">
+                                <rect key="frame" x="319" y="192" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="G2F-lS-KHP"/>
+                                    <constraint firstAttribute="height" constant="20" id="iRb-1r-crA"/>
+                                </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rOY-gJ-Fh1" firstAttribute="leading" secondItem="XhB-C6-d89" secondAttribute="leading" constant="24" id="301-rc-gl2"/>
+                            <constraint firstItem="rOY-gJ-Fh1" firstAttribute="top" secondItem="hjZ-KD-WSi" secondAttribute="top" id="4sv-qr-avu"/>
+                            <constraint firstItem="XhB-C6-d89" firstAttribute="trailing" secondItem="d4A-dx-PN4" secondAttribute="trailing" constant="24" id="7oG-ge-uqH"/>
+                            <constraint firstItem="d4A-dx-PN4" firstAttribute="leading" secondItem="XhB-C6-d89" secondAttribute="leading" constant="24" id="94q-at-cV3"/>
+                            <constraint firstItem="zSO-5c-5rJ" firstAttribute="top" secondItem="XhB-C6-d89" secondAttribute="top" constant="192" id="CiZ-NX-hQv"/>
+                            <constraint firstItem="XhB-C6-d89" firstAttribute="trailing" secondItem="rOY-gJ-Fh1" secondAttribute="trailing" constant="24" id="Fwt-1a-Qkk"/>
+                            <constraint firstItem="pPk-9z-an7" firstAttribute="top" secondItem="Uk3-oA-uJb" secondAttribute="bottom" constant="24" id="JJL-bl-U7a"/>
+                            <constraint firstItem="pPk-9z-an7" firstAttribute="leading" secondItem="XhB-C6-d89" secondAttribute="leading" constant="24" id="LfX-nk-XjM"/>
+                            <constraint firstItem="hjZ-KD-WSi" firstAttribute="centerX" secondItem="aQ2-A7-VxN" secondAttribute="centerX" id="S1m-iX-Jby"/>
+                            <constraint firstItem="hjZ-KD-WSi" firstAttribute="top" secondItem="pPk-9z-an7" secondAttribute="top" id="TQb-45-5ml"/>
+                            <constraint firstItem="pPk-9z-an7" firstAttribute="centerX" secondItem="aQ2-A7-VxN" secondAttribute="centerX" id="XJl-oo-TRa"/>
+                            <constraint firstItem="Uk3-oA-uJb" firstAttribute="centerX" secondItem="aQ2-A7-VxN" secondAttribute="centerX" id="ZdZ-Uy-CLc"/>
+                            <constraint firstItem="d4A-dx-PN4" firstAttribute="top" secondItem="pPk-9z-an7" secondAttribute="bottom" constant="34" id="aCU-WZ-efd"/>
+                            <constraint firstItem="hjZ-KD-WSi" firstAttribute="height" secondItem="pPk-9z-an7" secondAttribute="height" id="bvd-QM-hIm"/>
+                            <constraint firstItem="XhB-C6-d89" firstAttribute="trailing" secondItem="zSO-5c-5rJ" secondAttribute="trailing" constant="36" id="cny-QW-M56"/>
+                            <constraint firstItem="Uk3-oA-uJb" firstAttribute="top" secondItem="XhB-C6-d89" secondAttribute="top" constant="36" id="dbt-vQ-GX4"/>
+                            <constraint firstItem="x3X-DO-L58" firstAttribute="centerX" secondItem="aQ2-A7-VxN" secondAttribute="centerX" id="f85-h6-i8t"/>
+                            <constraint firstItem="XhB-C6-d89" firstAttribute="trailing" secondItem="hjZ-KD-WSi" secondAttribute="trailing" constant="24" id="j4s-iD-6vL"/>
+                            <constraint firstItem="hjZ-KD-WSi" firstAttribute="leading" secondItem="XhB-C6-d89" secondAttribute="leading" constant="24" id="mMI-OU-Y3H"/>
+                            <constraint firstItem="XhB-C6-d89" firstAttribute="trailing" secondItem="pPk-9z-an7" secondAttribute="trailing" constant="24" id="pfP-CN-EoD"/>
+                            <constraint firstItem="rOY-gJ-Fh1" firstAttribute="height" secondItem="hjZ-KD-WSi" secondAttribute="height" id="vAt-sS-UeW"/>
+                            <constraint firstItem="XhB-C6-d89" firstAttribute="bottom" secondItem="x3X-DO-L58" secondAttribute="bottom" constant="24" id="wRu-zR-dPa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XhB-C6-d89"/>
+                    </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="Uk3-oA-uJb" id="SGY-ff-4vD"/>
+                        <outlet property="displayNameLabel" destination="d4A-dx-PN4" id="RkD-Hw-bGc"/>
+                        <outlet property="followButton" destination="hjZ-KD-WSi" id="DT0-Gr-0Es"/>
+                        <outlet property="followRequestLoadingView" destination="zSO-5c-5rJ" id="akQ-HJ-NzB"/>
+                        <outlet property="followingButton" destination="pPk-9z-an7" id="CQl-3f-6WH"/>
+                        <outlet property="needDataIfFollowingLoadingView" destination="rOY-gJ-Fh1" id="bKy-Uc-mYz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S9L-kg-RRf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="262" y="90"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="icon-cross" width="10" height="10"/>
+        <image name="icon-cross" width="23" height="23"/>
     </resources>
 </document>
