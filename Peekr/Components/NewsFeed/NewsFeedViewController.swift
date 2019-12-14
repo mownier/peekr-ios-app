@@ -177,6 +177,55 @@ extension NewsFeedViewController: PostTableCellDelegate {
     public func postTableCellOnUnmuted(_ cell: PostTableCell) {
         cell.updateImageOfSoundButtonWith(name: "icon-volume-high")
     }
+    
+    public func postTableCellWillShowUser(_ cell: PostTableCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        let authorID = data.second[indexPath.row].authorID
+        guard !isMyID(authorID) else {
+            return
+        }
+        let user = data.first.filter({ $0.id == authorID }).first
+        let screen = createUserProfileScreen()
+            .avatarURL(URL(string: user?.avatar ?? ""))
+            .displayNameText(user?.username ?? "")
+            .onClose({ $0.dismiss(animated: true, completion: nil) })
+            .onNeedDataIfFollowing({ screen in
+                isFollowingUser(withID: authorID) { result in
+                    switch result {
+                    case let .okay(isFollowing):
+                        screen.isFollowing(isFollowing)
+                        
+                    case let .notOkay(error):
+                        print("isFollowingUser with error:", error)
+                    }
+                }
+            })
+            .onFollow({ screen in
+                followUser(withID: authorID) { result in
+                    switch result {
+                    case .okay:
+                        screen.isFollowing(true)
+                        
+                    case let .notOkay(error):
+                        print("followUser with error:", error)
+                    }
+                }
+            })
+            .onUnfollow({ screen in
+                unfollowUser(withID: authorID) { result in
+                    switch result {
+                    case .okay:
+                        screen.isFollowing(false)
+                        
+                    case let .notOkay(error):
+                        print("unfollowUser with error:", error)
+                    }
+                }
+            })
+        present(screen, animated: true, completion: nil)
+    }
 }
 
 public func createNewsFeedViewController() -> NewsFeedViewController {
