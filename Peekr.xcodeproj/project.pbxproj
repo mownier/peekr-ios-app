@@ -74,6 +74,7 @@
 		48BA320D23151653009B2EA6 /* CoreStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320C23151653009B2EA6 /* CoreStrings.swift */; };
 		48BA320F23151930009B2EA6 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA320E23151930009B2EA6 /* SignInService.swift */; };
 		48BD0D1D23A4820D00DF1E47 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD0D1C23A4820D00DF1E47 /* FollowService.swift */; };
+		48BD0D1F23A4914000DF1E47 /* UserProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD0D1E23A4914000DF1E47 /* UserProfileScreen.swift */; };
 		48DFA804231F9DFC0020BE83 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48DFA803231F9DFC0020BE83 /* Home.storyboard */; };
 		48DFA806231F9E4C0020BE83 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA805231F9E4C0020BE83 /* HomeViewController.swift */; };
 		7C38933B3BEBD7524BCA3A23 /* Pods_Peekr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B02E76514D27ADCE66EAA7 /* Pods_Peekr.framework */; };
@@ -151,6 +152,7 @@
 		48BA320C23151653009B2EA6 /* CoreStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStrings.swift; sourceTree = "<group>"; };
 		48BA320E23151930009B2EA6 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		48BD0D1C23A4820D00DF1E47 /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
+		48BD0D1E23A4914000DF1E47 /* UserProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileScreen.swift; sourceTree = "<group>"; };
 		48DFA803231F9DFC0020BE83 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		48DFA805231F9E4C0020BE83 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C6F57A5E84206A69716ED320 /* Pods-Peekr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peekr.release.xcconfig"; path = "Target Support Files/Pods-Peekr/Pods-Peekr.release.xcconfig"; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				48B0733523223990008E6500 /* MyProfileViewController.swift */,
 				48B0733923223F2A008E6500 /* ProfileBuilder.swift */,
 				48B0733723223D15008E6500 /* ProfileStrings.swift */,
+				48BD0D1E23A4914000DF1E47 /* UserProfileScreen.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				48B0732D2322211C008E6500 /* HomePagingViewController.swift in Sources */,
 				48BD0D1D23A4820D00DF1E47 /* FollowService.swift in Sources */,
 				4876B87D232352A200512784 /* PostComposerViewController.swift in Sources */,
+				48BD0D1F23A4914000DF1E47 /* UserProfileScreen.swift in Sources */,
 				48B0733C23223F78008E6500 /* ProfileFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
