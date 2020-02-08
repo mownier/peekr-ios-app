@@ -69,8 +69,13 @@ func makeHomeScreenAsRootOf(window: UIWindow) -> HomeViewController {
             selectedImageName: "icon-search",
             defaultImageName: "icon-search-deselected",
             screen: { _ in
-                let screen = UIViewController()
-                screen.view.backgroundColor = UIColor.blue
+                let screen = createOverallSearchScreen()
+                    .setContentView({ screen in
+                        let usersSearchResultScreen = createUsersSearchResultScreen()
+                        screen.addChild(usersSearchResultScreen)
+                        usersSearchResultScreen.didMove(toParent: screen)
+                        return usersSearchResultScreen.view
+                    })
                 return screen
         }),
         HomeViewController.TabBarItem(
