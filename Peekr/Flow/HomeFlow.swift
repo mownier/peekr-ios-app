@@ -69,12 +69,23 @@ func makeHomeScreenAsRootOf(window: UIWindow) -> HomeViewController {
             selectedImageName: "icon-search",
             defaultImageName: "icon-search-deselected",
             screen: { _ in
+                let data = (0..<21).map({ (String($0), "User \($0)") })
+                let usersSearchResultScreen = createUsersSearchResultScreen()
+                weak var weakResultScreen = usersSearchResultScreen
                 let screen = createOverallSearchScreen()
                     .setContentView({ screen in
-                        let usersSearchResultScreen = createUsersSearchResultScreen()
                         screen.addChild(usersSearchResultScreen)
                         usersSearchResultScreen.didMove(toParent: screen)
                         return usersSearchResultScreen.view
+                    })
+                    .onWillSearchWithKeyword({ pair in
+                        pair.first.stopSearching()
+                        // TODO: Call the service that will search for users
+                        weakResultScreen?
+                            .displayItems(data
+                                .filter({ $0.1.lowercased().contains(pair.second.lowercased()) })
+                                .map({ UserTableCell.DisplayItem(id: $0.0, displayName: $0.1) }))
+                            .reload()
                     })
                 return screen
         }),
